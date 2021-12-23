@@ -8,5 +8,4 @@ class animal(
     val animalFamily: String,
     val animalOrder: String,
     val animalClass: String
-) {
-}
+) { }
