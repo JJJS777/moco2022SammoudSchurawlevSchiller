@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 //This class will represent a database entity in our app
 @Entity( tableName = "animal" )
-data class Animals(
+data class Animals (
     @PrimaryKey(autoGenerate = true)
     val animalID: Int = 0,
     @ColumnInfo(name = "species")

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.tierdex.fragments.HomeFragment
 import com.example.tierdex.fragments.SecondFragment
 import com.example.tierdex.fragments.ThirdFragment
-import kotlinx.android.synthetic.main.activity_main.*
+//import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,14 +15,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottom_navigation.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.ic_home -> frameSwitch(HomeFragment())
-                R.id.ic_input -> frameSwitch(SecondFragment())
-                R.id.ic_input2 -> frameSwitch(ThirdFragment())
-            }
-            true
-        }
+//        bottom_navigation.setOnItemSelectedListener {
+//            when(it.itemId){
+//                R.id.ic_home -> frameSwitch(HomeFragment())
+//                R.id.ic_input -> frameSwitch(SecondFragment())
+//                R.id.ic_input2 -> frameSwitch(ThirdFragment())
+//            }
+//            true
+//        }
 
         frameSwitch(HomeFragment())
     }
