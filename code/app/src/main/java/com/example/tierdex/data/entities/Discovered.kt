@@ -5,25 +5,24 @@ import java.util.*
 
 @Entity(
     tableName = "discovered",
-    indices = [Index("animal_id"), Index("user_id")],
+    //indices = [Index("animalID"), Index("userID")],
     foreignKeys = [
         ForeignKey(
             entity = Animals::class,
-            parentColumns = ["animal_id"],
-            childColumns = ["tbl_animal_id"]) ,
+            parentColumns = ["animalID"],
+            childColumns = ["tbl_animalID"]) ,
         ForeignKey(
             entity = Users::class,
-            parentColumns = ["user_id"],
-            childColumns = ["tbl_user_id"])
+            parentColumns = ["userID"],
+            childColumns = ["tbl_userID"])
     ]
 )
-
 data class Discovered (
     @PrimaryKey()
-    val tbl_animal_id: Int,
-    val tbl_user_id: Int,
+    val tbl_animalID: Int,
+    val tbl_userID: Int,
     @ColumnInfo(name = "discoverytime")
-    val discoverytime: Date,
+    val discoverytime: Int,
     @ColumnInfo(name = "location")
     val gps_location: Int,
     @ColumnInfo(name = "picture")

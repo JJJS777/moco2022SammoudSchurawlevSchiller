@@ -5,15 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.tierdex.data.dao.AnimalDao
+import com.example.tierdex.data.dao.DiscoveredDao
 import com.example.tierdex.data.dao.UserDao
 import com.example.tierdex.data.entities.Animals
 import com.example.tierdex.data.entities.Discovered
 import com.example.tierdex.data.entities.Users
 
-@Database(entities = [Animals::class, Users::class], version = 1, exportSchema = false )
+@Database(entities = [Animals::class, Users::class, Discovered::class], version = 1, exportSchema = false )
 abstract class TierDexRoomDB: RoomDatabase() {
     abstract fun animalDao(): AnimalDao
     abstract fun userDao(): UserDao
+    abstract fun discoveredDao(): DiscoveredDao
 
     // allows access to the methods for creating or getting the database using the class name as the qualifier.
     companion object {
