@@ -1,26 +1,21 @@
 package com.example.tierdex.data.entities
 
 import androidx.room.*
-import java.util.*
 
 @Entity(
     tableName = "discovered",
-    //indices = [Index("animalID"), Index("userID")],
     foreignKeys = [
         ForeignKey(
             entity = Animals::class,
             parentColumns = ["animalID"],
-            childColumns = ["tbl_animalID"]) ,
-        ForeignKey(
-            entity = Users::class,
-            parentColumns = ["userID"],
-            childColumns = ["tbl_userID"])
+            childColumns = ["tbl_animalID"])
     ]
 )
 data class Discovered (
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
+    val discoID: Int = 0,
+    @ColumnInfo(index = true, name = "tbl_animalID")
     val tbl_animalID: Int,
-    val tbl_userID: Int,
     @ColumnInfo(name = "discoverytime")
     val discoverytime: Int,
     @ColumnInfo(name = "location")
@@ -32,3 +27,14 @@ data class Discovered (
     @ColumnInfo(name = "is_alive")
     val is_alive: Boolean
     ) { }
+
+data class DiscoveredAnimals (
+    @Embedded val animal: Animals,
+    @Relation(
+        parentColumn = "animalID",
+        entityColumn = "tbl_animalID"
+    )
+    val discoveries: List<Discovered>
+    )
+
+

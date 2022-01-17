@@ -5,26 +5,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.tierdex.data.dao.AnimalDao
 import com.example.tierdex.data.dao.DiscoveredDao
-import com.example.tierdex.data.dao.UserDao
 import com.example.tierdex.data.entities.Animals
 import com.example.tierdex.data.entities.Discovered
-import com.example.tierdex.data.entities.Users
 import kotlinx.coroutines.launch
 
-class TierDexViewModel( private val animalDao: AnimalDao, private val userDao: UserDao,
-                        private val discoveredDao: DiscoveredDao)
-    : ViewModel() {
+class TierDexViewModel( private val animalDao: AnimalDao, private val discoveredDao: DiscoveredDao)
+    : ViewModel() { //hier ggf. mit AndroidViewModel arbeiten
 
-    //todo: ohne ende Redundanz, wie beheben??
+
     private fun insertAnimal( animals: Animals){
         viewModelScope.launch {
             animalDao.insert( animals )
-        }
-    }
-
-    private fun insertUser( user: Users ){
-        viewModelScope.launch {
-            userDao.insert( user )
         }
     }
 
@@ -36,18 +27,20 @@ class TierDexViewModel( private val animalDao: AnimalDao, private val userDao: U
 
     //TODO später sollen die Daten aus dem Internet gefached werden und in Room abgespeichert
     private fun getNewAnimalEntry( animalSpecies: String, animalFamily: String, animalOrder: String,
-                                   animalClass: String ) : Animals{
+                                   animalClass: String, animalRegion: String ) : Animals{
         return Animals(
             animalSpecies = animalSpecies,
             animalFamily = animalFamily,
             animalOrder = animalOrder,
-            animalClass = animalClass
+            animalClass = animalClass,
+            animalRegion = animalRegion
         )
     }
 
     fun addNewAnimal(animalSpecies: String, animalFamily: String, animalOrder: String,
-                     animalClass: String) {
-        val newAnimal = getNewAnimalEntry( animalSpecies, animalFamily, animalOrder, animalClass )
+                     animalClass: String, animalRegion: String) {
+        val newAnimal = getNewAnimalEntry( animalSpecies, animalFamily, animalOrder, animalClass,
+            animalRegion )
         insertAnimal(newAnimal)
     }
 
@@ -59,14 +52,14 @@ class TierDexViewModel( private val animalDao: AnimalDao, private val userDao: U
 
 }
 
-class TierDexViewModelFactory( private val animalDao: AnimalDao, private val userDao: UserDao,
+class TierDexViewModelFactory( private val animalDao: AnimalDao,
                                private val discoveredDao: DiscoveredDao )
     : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TierDexViewModelFactory::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return TierDexViewModel(animalDao, userDao, discoveredDao) as T
+            return TierDexViewModel(animalDao, discoveredDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -16,5 +16,7 @@ data class Animals (
     @ColumnInfo(name = "order")
     val animalOrder: String,
     @ColumnInfo(name = "class")
-    val animalClass: String
+    val animalClass: String,
+    @ColumnInfo(name = "Region")
+    val animalRegion: String
 ) { }
