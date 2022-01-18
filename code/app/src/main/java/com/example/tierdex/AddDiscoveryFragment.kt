@@ -23,7 +23,10 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
 import android.content.Context.INPUT_METHOD_SERVICE
-
+import androidx.lifecycle.ViewModelProvider
+import com.example.tierdex.TierDexViewModel
+import com.example.tierdex.data.entities.Animals
+import com.example.tierdex.data.entities.Discovered
 
 
 /**
@@ -33,10 +36,23 @@ class AddDiscoveryFragment : Fragment() {
 
     //private val navigationArgs: ItemDetailFragmentArgs by navArgs()
 
+//    private val viewModel: TierDexViewModel by activityViewModels {
+//        TierDexViewModelFactory(
+//            (activity?.application as TierDexApplication).database.animalDao(),
+//            (activity?.application as TierDexApplication).database.discoveredDao()
+//        )
+//    }
+
+    lateinit var animals: Animals
+    lateinit var discovery: Discovered
+
+    private val viewModel: TierDexViewModel = ViewModelProvider(this)
+        .get( TierDexViewModel::class.java)
 
     //TODO mit Data Binding ersetzten
     private var _binding: FragmentAddDiscoveryBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +61,23 @@ class AddDiscoveryFragment : Fragment() {
     ): View? {
         _binding = FragmentAddDiscoveryBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    //TODO private fun isEntryValid(): Boolean { } implementieren
+
+    private fun addNewDiscovery(){
+        //ToDO hier isEntryValid() aufrufen
+        viewModel.addNewDiscovery(
+            binding.discoveryTime.text.toString(),
+            binding.discoveryIsAlive.text.toString()
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.saveAction.setOnClickListener {
+            addNewDiscovery()
+        }
     }
 
     /**

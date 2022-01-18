@@ -31,7 +31,7 @@ abstract class TierDexRoomDB: RoomDatabase() {
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
-                return instance
+                instance
             }
         }
     }

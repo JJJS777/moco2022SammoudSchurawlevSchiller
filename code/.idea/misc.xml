@@ -6,10 +6,13 @@
         <entry key="app/src/main/res/layout/activity_loading.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/animal_list_fragment.xml" value="0.17760416666666667" />
-        <entry key="app/src/main/res/layout/fragment_add_discovery.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_add_discovery.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_add_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13949275362318841" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.13949275362318841" />
         <entry key="app/src/main/res/layout/fragment_third.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/item_list_item.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.2125" />
       </map>
     </option>
   </component>
