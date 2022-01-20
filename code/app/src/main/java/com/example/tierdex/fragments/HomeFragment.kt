@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tierdex.databinding.FragmentHomeBinding
-import com.example.tierdex.model.DataSource
+import com.example.tierdex.data.DataSource
 import com.example.tierdex.model.ItemAdapter
 
 
