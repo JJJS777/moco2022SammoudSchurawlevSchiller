@@ -1,5 +1,6 @@
-package com.example.tierdex.model
+package com.example.tierdex.data
 import com.example.tierdex.R
+import com.example.tierdex.model.Post
 
 class DataSource{
     fun loadPost() : List<Post>{
