@@ -33,5 +33,4 @@ class HomeFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
 
     }
-
 }
