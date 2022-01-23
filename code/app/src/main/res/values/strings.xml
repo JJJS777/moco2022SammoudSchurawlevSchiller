@@ -10,14 +10,14 @@
     <string name="animal1">Tiger</string>
     <string name="animal2">Otter</string>
     <array name="animal3">
-        <item id="1"/>
+        <item id="1" />
         <item class="Mammalia" />
         <item order="Carnivora" />
-        <item suborder="Feliformia"/>
-        <item family="Felidae"/>
-        <item subfamily="Panthera"/>
-        <item genus="Pantherinae"/>
-        <item species="P. leo"/>
-        <item binomial_name="Panthera leo"/>
+        <item suborder="Feliformia" />
+        <item family="Felidae" />
+        <item subfamily="Panthera" />
+        <item genus="Pantherinae" />
+        <item species="P. leo" />
+        <item binomial_name="Panthera leo" />
     </array>
 </resources>
