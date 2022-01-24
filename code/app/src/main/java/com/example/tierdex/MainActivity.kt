@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.tierdex.databinding.ActivityMainBinding
+import com.example.tierdex.fragments.AnimalListFragment
 import com.example.tierdex.fragments.HomeFragment
 import com.example.tierdex.fragments.SecondFragment
 import com.example.tierdex.fragments.ThirdFragment
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.ic_home -> frameSwitch(HomeFragment())
                 R.id.ic_input -> frameSwitch(SecondFragment())
-                R.id.ic_input2 -> frameSwitch(ThirdFragment())
+                R.id.ic_input2 -> frameSwitch(AnimalListFragment())
             }
             true
         }

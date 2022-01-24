@@ -17,21 +17,21 @@ class AnimalAdapter( private val context: Fragment, private val animalDataSet: L
     class AnimalViewHolder( view: View )
         : RecyclerView.ViewHolder( view ){
 
-        val textView: TextView = view.findViewById( R.id.animal_id )
+        val textView: TextView = view.findViewById( R.id.animal_title )
         val imageView: ImageView = view.findViewById( R.id.animal_image )
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
        val adapterLayout = LayoutInflater.from(parent.context)
-           .inflate( R.layout.list_animal, parent, false )
+           .inflate( R.layout.animal_view, parent, false )
 
        return AnimalViewHolder( adapterLayout )
     }
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
         val current = animalDataSet.get(position)
-        holder.textView.text = context.resources.getString( current.animalID )
+        holder.textView.text = context.resources.getString( current.animalTitle )
         holder.imageView.setImageResource( current.imgRes )
     }
 
