@@ -1,13 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.tierdex"
+        applicationId "com.main.tierdex"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -43,7 +44,19 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // dependency for creating a circle image.
-
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // FireBase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
+
+    // Declare the dependency for the Cloud Firestore library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
+
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }

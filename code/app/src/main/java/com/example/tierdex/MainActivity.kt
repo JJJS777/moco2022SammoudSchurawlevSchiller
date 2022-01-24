@@ -7,6 +7,9 @@ import com.example.tierdex.databinding.ActivityMainBinding
 import com.example.tierdex.fragments.HomeFragment
 import com.example.tierdex.fragments.SecondFragment
 import com.example.tierdex.fragments.ThirdFragment
+import com.google.firebase.FirebaseApp
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.safetynet.SafetyNetAppCheckProviderFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> frameSwitch(HomeFragment())
