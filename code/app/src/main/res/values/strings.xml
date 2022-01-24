@@ -2,4 +2,22 @@
     <string name="app_name">TierDex</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="kamera">Kamera</string>
+    <string name="document">Document</string>
+    <string name="User1">User_One</string>
+    <string name="User2">User_Two</string>
+    <string name="animal1">Tiger</string>
+    <string name="animal2">Otter</string>
+    <array name="animal3">
+        <item id="1" />
+        <item class="Mammalia" />
+        <item order="Carnivora" />
+        <item suborder="Feliformia" />
+        <item family="Felidae" />
+        <item subfamily="Panthera" />
+        <item genus="Pantherinae" />
+        <item species="P. leo" />
+        <item binomial_name="Panthera leo" />
+    </array>
 </resources>

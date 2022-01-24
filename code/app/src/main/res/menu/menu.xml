@@ -3,13 +3,13 @@
     <item
         android:id="@+id/ic_home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/ic_input"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="menu/menu.xml"/>
+        android:icon="@drawable/ic_baseline_camera_24"
+        android:title="@string/kamera"/>
     <item
         android:id="@+id/ic_input2"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="menu/menu.xml"/>
+        android:icon="@drawable/ic_baseline_insert_drive_file_24"
+        android:title="@string/document"/>
 </menu>
