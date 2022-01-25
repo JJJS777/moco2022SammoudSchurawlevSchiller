@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-01-20T16:55:22.877Z" agent="5.0 (Macintosh)" etag="LEIuOblffDWCPlclMlIL" version="16.4.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-01-25T08:17:43.515Z" agent="5.0 (Macintosh)" etag="_4DFATLIlYStxP-axPum" version="16.4.5" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="ERM">
-    <mxGraphModel dx="1426" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="1113" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -328,28 +328,28 @@
             <mxRectangle width="220" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-1" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1" parent="1SpqF7eM3-M7_53SCtbL-35">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-1" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" parent="1SpqF7eM3-M7_53SCtbL-35" vertex="1">
           <mxGeometry y="215" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-2" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" vertex="1" parent="_xrkPlqDSz4lEaZDueBf-1">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-2" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="_xrkPlqDSz4lEaZDueBf-1" vertex="1">
           <mxGeometry width="30" height="30" as="geometry">
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-3" value="animalSize" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="_xrkPlqDSz4lEaZDueBf-1">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-3" value="animalSize" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="_xrkPlqDSz4lEaZDueBf-1" vertex="1">
           <mxGeometry x="30" width="220" height="30" as="geometry">
             <mxRectangle width="220" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-4" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1" parent="1SpqF7eM3-M7_53SCtbL-35">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-4" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" parent="1SpqF7eM3-M7_53SCtbL-35" vertex="1">
           <mxGeometry y="245" width="250" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-5" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" vertex="1" parent="_xrkPlqDSz4lEaZDueBf-4">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-5" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;" parent="_xrkPlqDSz4lEaZDueBf-4" vertex="1">
           <mxGeometry width="30" height="30" as="geometry">
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_xrkPlqDSz4lEaZDueBf-6" value="animalColour" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" vertex="1" parent="_xrkPlqDSz4lEaZDueBf-4">
+        <mxCell id="_xrkPlqDSz4lEaZDueBf-6" value="animalColour" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;" parent="_xrkPlqDSz4lEaZDueBf-4" vertex="1">
           <mxGeometry x="30" width="220" height="30" as="geometry">
             <mxRectangle width="220" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -504,9 +504,17 @@
         <mxCell id="ZiZvBB_XBpYenlgErEXp-58" value="User Trägt Ort der Entdeckung ein" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
           <mxGeometry x="-1325" y="530" width="245" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="ZiZvBB_XBpYenlgErEXp-59" value="&lt;h1&gt;Use Case &quot;New Discovery&quot;&lt;br&gt;&lt;/h1&gt;&lt;p&gt;1- User Öffnet App&lt;/p&gt;&lt;p&gt;2- User Klickt auf &quot;New Discovery&quot;&lt;/p&gt;&lt;p&gt;3- System öffnet &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;AddDoscoveryFragment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;4- User trägt folgende Infos ein &lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;i, Ort (GPS Location)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;ii, Datum / Uhrzeit&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;iii, (Tier-) Art&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;a, startet Suchfunktion, wo nach &lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;dem entsprechenden Tier &lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;gesucht werden kann&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;iv, Anzahl&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;v, Geschlecht&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;vi, alter / status (Array mit Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;vii, art der beobachtung (array mit &lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt;	&lt;/span&gt;viii, Bemerkung&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;5- User klickt auf speichern&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+        <mxCell id="ZiZvBB_XBpYenlgErEXp-59" value="&lt;h1&gt;Use Case &quot;New Discovery&quot;&lt;br&gt;&lt;/h1&gt;&lt;p&gt;1- User Öffnet App&lt;/p&gt;&lt;p&gt;2- User Klickt auf &quot;New Discovery&quot;&lt;/p&gt;&lt;p&gt;3- System öffnet &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;AddDoscoveryFragment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;4- User trägt folgende Infos ein &lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;i, Ort (GPS Location)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;ii, Datum / Uhrzeit&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iii, (Tier-) Art&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;a, startet Suchfunktion, wo nach &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;dem entsprechenden Tier &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;gesucht werden kann&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iv, Anzahl&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;v, Geschlecht&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vi, alter / status (Array mit Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vii, art der beobachtung (array mit &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;viii, Bemerkung&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;5- User klickt auf speichern&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
           <mxGeometry x="-1840" y="90" width="250" height="560" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="UNCaHgJIETT0q-oL_rWS" name="Page-3">
+    <mxGraphModel dx="1426" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="CWIcfz5hmmfhBGYqvgRY-0" />
+        <mxCell id="CWIcfz5hmmfhBGYqvgRY-1" parent="CWIcfz5hmmfhBGYqvgRY-0" />
       </root>
     </mxGraphModel>
   </diagram>
