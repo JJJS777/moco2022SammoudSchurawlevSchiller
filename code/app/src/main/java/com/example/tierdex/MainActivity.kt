@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> frameSwitch(HomeFragment())
-                R.id.ic_input -> frameSwitch(SecondFragment())
-                R.id.ic_input2 -> frameSwitch()
+                R.id.ic_input -> frameSwitch(AnimalListFragment())
+                R.id.ic_input2 -> frameSwitch(SecondFragment())
             }
             true
         }
@@ -34,4 +34,4 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragment_container,fragment)
         transaction.commit()
     }
-y}
+}
