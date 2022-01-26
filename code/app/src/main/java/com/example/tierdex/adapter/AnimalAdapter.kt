@@ -7,33 +7,49 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tierdex.R
+import com.example.tierdex.databinding.AnimalViewBinding
 import com.example.tierdex.model.Animal
 
-class AnimalAdapter( private val context: Fragment, private val animalDataSet: List<Animal> )
-    : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
+class AnimalAdapter
+    : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCallback) {
 
-    class AnimalViewHolder( view: View )
-        : RecyclerView.ViewHolder( view ){
+    class AnimalViewHolder ( private var binding: AnimalViewBinding )
+        : RecyclerView.ViewHolder(binding.root){
+            fun bind( animal : Animal ){
+                binding.animal
+                // This is important, because it forces the data binding to execute immediately,
+                // which allows the RecyclerView to make the correct view size measurements
+                binding.executePendingBindings()
+            }
+        }
 
-        val textView: TextView = view.findViewById( R.id.animal_title )
-        val imageView: ImageView = view.findViewById( R.id.animal_image )
+    /**
+     * Allows the RecyclerView to determine which items have changed when the [List] of
+     * [MarsPhoto] has been updated.
+     */
+    companion object DiffCallback : DiffUtil.ItemCallback<Animal>() {
+        override fun areItemsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+            return oldItem.animalID == newItem.animalID
+        }
 
+        override fun areContentsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+            return oldItem.imgSrcUrl == newItem.imgSrcUrl
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
-       val adapterLayout = LayoutInflater.from(parent.context)
-           .inflate( R.layout.animal_view, parent, false )
-
-       return AnimalViewHolder( adapterLayout )
+       return AnimalViewHolder(
+           AnimalViewBinding.inflate(LayoutInflater.from(parent.context))
+       )
     }
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
-        val current = animalDataSet.get(position)
-        holder.textView.text = context.resources.getString( current.animalTitle )
-        holder.imageView.setImageResource( current.imgRes )
+        val animal = getItem(position)
+        holder.bind(animal)
     }
 
-    override fun getItemCount(): Int = animalDataSet.size
 }
