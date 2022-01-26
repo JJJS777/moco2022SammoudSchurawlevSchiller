@@ -1,7 +1,5 @@
 package com.example.tierdex.model
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import com.squareup.moshi.Json
 
 data class Animal(
