@@ -1,16 +1,10 @@
 package com.example.tierdex.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tierdex.R
 import com.example.tierdex.databinding.AnimalViewBinding
 import com.example.tierdex.model.Animal
 
@@ -37,7 +31,7 @@ class AnimalAdapter
      */
     companion object DiffCallback : DiffUtil.ItemCallback<Animal>() {
         override fun areItemsTheSame(oldItem: Animal, newItem: Animal): Boolean {
-            return oldItem.animalID == newItem.animalID
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Animal, newItem: Animal): Boolean {
