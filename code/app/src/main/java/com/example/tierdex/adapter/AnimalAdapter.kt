@@ -14,6 +14,10 @@ import com.example.tierdex.R
 import com.example.tierdex.databinding.AnimalViewBinding
 import com.example.tierdex.model.Animal
 
+/**
+ * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
+ * data, including computing diffs between lists.
+ */
 class AnimalAdapter
     : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCallback) {
 
@@ -29,7 +33,7 @@ class AnimalAdapter
 
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of
-     * [MarsPhoto] has been updated.
+     * [Animals] has been updated.
      */
     companion object DiffCallback : DiffUtil.ItemCallback<Animal>() {
         override fun areItemsTheSame(oldItem: Animal, newItem: Animal): Boolean {

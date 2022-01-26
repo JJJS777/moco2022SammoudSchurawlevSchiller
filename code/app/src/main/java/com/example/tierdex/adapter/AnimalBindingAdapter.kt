@@ -10,7 +10,9 @@ import com.example.tierdex.R
 import com.example.tierdex.model.Animal
 import com.example.tierdex.model.AnimalApiStatus
 
-
+/**
+ * Updates the data shown in the [RecyclerView].
+ */
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Animal>?) {
     val adapter = recyclerView.adapter as AnimalAdapter
