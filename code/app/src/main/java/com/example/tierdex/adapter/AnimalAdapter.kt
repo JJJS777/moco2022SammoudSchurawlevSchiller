@@ -24,7 +24,7 @@ class AnimalAdapter
     class AnimalViewHolder ( private var binding: AnimalViewBinding )
         : RecyclerView.ViewHolder(binding.root){
             fun bind( animal : Animal ){
-                binding.animal
+                binding.animal = animal
                 // This is important, because it forces the data binding to execute immediately,
                 // which allows the RecyclerView to make the correct view size measurements
                 binding.executePendingBindings()

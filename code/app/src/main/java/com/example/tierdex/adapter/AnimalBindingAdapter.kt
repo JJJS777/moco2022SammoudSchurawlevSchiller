@@ -13,7 +13,7 @@ import com.example.tierdex.model.AnimalApiStatus
 /**
  * Updates the data shown in the [RecyclerView].
  */
-@BindingAdapter("listData")
+@BindingAdapter("listData") //Attribute aus XML
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Animal>?) {
     val adapter = recyclerView.adapter as AnimalAdapter
     adapter.submitList(data)
@@ -23,7 +23,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Animal>?) {
 /**
  * Uses the Coil library to load an image by URL into an [ImageView]
  */
-@BindingAdapter("imageUrl")
+@BindingAdapter("imageUrl") //Attribute aus XML
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
@@ -35,7 +35,7 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 
-@BindingAdapter("AnimalApiStatus")
+@BindingAdapter("animalApiStatus") //Attribute aus XML
 fun bindStatus(statusImageView: ImageView, status: AnimalApiStatus?) {
     when (status) {
         AnimalApiStatus.LOADING -> {
