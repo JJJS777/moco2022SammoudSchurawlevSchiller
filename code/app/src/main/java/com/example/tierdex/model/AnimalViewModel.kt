@@ -15,12 +15,11 @@ class AnimalViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<AnimalApiStatus>()
-
     // The external immutable LiveData for the request status
     val status: LiveData<AnimalApiStatus> = _status
 
-    private val _animals = MutableLiveData<List<Animal>>()
-    val animals: LiveData<List<Animal>> = _animals
+    private val _animalProperties = MutableLiveData<ApiResponse>()
+    val animalProperties: LiveData<ApiResponse> = _animalProperties
 
     init {
         getAnimalData()
@@ -31,11 +30,11 @@ class AnimalViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = AnimalApiStatus.LOADING
             try {
-                _animals.value = AnimalApi.retrofitService.getData()
+                _animalProperties.value = AnimalApi.retrofitService.getData()
                 _status.value = AnimalApiStatus.DONE
             } catch (e: Exception){
                 _status.value = AnimalApiStatus.ERROR
-                _animals.value = listOf()
+                Log.e("conn_err", e.message.toString())
             }
         }
     }

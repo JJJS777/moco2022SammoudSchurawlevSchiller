@@ -7,7 +7,7 @@
     <data>
         <variable
             name="animal"
-            type="com.example.tierdex.model.Animal" />
+            type="com.example.tierdex.model.AnimalData" />
 
     </data>
 

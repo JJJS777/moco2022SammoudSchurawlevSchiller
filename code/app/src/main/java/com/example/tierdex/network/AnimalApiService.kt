@@ -1,6 +1,7 @@
 package com.example.tierdex.network
 
-import com.example.tierdex.model.Animal
+import com.example.tierdex.model.AnimalData
+import com.example.tierdex.model.ApiResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -28,7 +29,8 @@ private val retrofit = Retrofit.Builder()
 
 interface AnimalApiService {
     @GET("photos")
-    suspend fun getData(): List<Animal>
+    //TODO Quaery Parameter einfügen...
+    suspend fun getData(): ApiResponse
 }
 
 /**

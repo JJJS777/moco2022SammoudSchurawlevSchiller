@@ -23,7 +23,7 @@
             android:padding="16dp"
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
-            app:listData="@{viewModel.animals}"
+            app:listData="@{viewModel.animalProperties}"
             tools:listitem="@layout/animal_view" />
 
         <ImageView

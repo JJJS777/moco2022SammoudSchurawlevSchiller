@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tierdex.databinding.AnimalViewBinding
-import com.example.tierdex.model.Animal
+import com.example.tierdex.model.AnimalData
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
 class AnimalAdapter
-    : ListAdapter<Animal, AnimalAdapter.AnimalViewHolder>(DiffCallback) {
+    : ListAdapter<AnimalData, AnimalAdapter.AnimalViewHolder>(DiffCallback) {
 
     class AnimalViewHolder ( private var binding: AnimalViewBinding )
         : RecyclerView.ViewHolder(binding.root){
-            fun bind( animal : Animal ){
-                binding.animal = animal
+            fun bind( animalData : AnimalData ){
+                binding.animal = animalData
                 // This is important, because it forces the data binding to execute immediately,
                 // which allows the RecyclerView to make the correct view size measurements
                 binding.executePendingBindings()
@@ -29,12 +29,12 @@ class AnimalAdapter
      * Allows the RecyclerView to determine which items have changed when the [List] of
      * [Animals] has been updated.
      */
-    companion object DiffCallback : DiffUtil.ItemCallback<Animal>() {
-        override fun areItemsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<AnimalData>() {
+        override fun areItemsTheSame(oldItem: AnimalData, newItem: AnimalData): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Animal, newItem: Animal): Boolean {
+        override fun areContentsTheSame(oldItem: AnimalData, newItem: AnimalData): Boolean {
             return oldItem.imgSrcUrl == newItem.imgSrcUrl
         }
     }
