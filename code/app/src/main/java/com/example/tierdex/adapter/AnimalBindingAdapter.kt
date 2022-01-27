@@ -14,9 +14,9 @@ import com.example.tierdex.model.ApiResponse
  * Updates the data shown in the [RecyclerView].
  */
 @BindingAdapter("listData") //Attribute aus XML
-fun bindRecyclerView(recyclerView: RecyclerView, data: ApiResponse) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: ApiResponse?) {
     val adapter = recyclerView.adapter as AnimalAdapter
-    adapter.submitList(data.searchResults.results)
+    adapter.submitList(data?.searchResults?.results)
 }
 
 

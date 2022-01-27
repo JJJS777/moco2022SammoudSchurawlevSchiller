@@ -8,7 +8,7 @@ data class ApiResponse(
 
 data class ResSearchResults(
     val totalRecords: String,
-    val results: AnimalData
+    val results: List<AnimalData>
 )
 
 data class AnimalData(
