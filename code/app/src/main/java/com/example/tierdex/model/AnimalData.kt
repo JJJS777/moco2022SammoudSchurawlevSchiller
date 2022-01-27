@@ -14,4 +14,5 @@ data class ResSearchResults(
 data class AnimalData(
     val id: String,
     // used to map img_src from the JSON to imgSrcUrl in our class
-    @Json(name = "imageUrl") val imgSrcUrl: String )
+    @Json(name = "imageUrl") val imgSrcUrl: String,
+    val name: String )

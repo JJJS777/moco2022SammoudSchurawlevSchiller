@@ -35,6 +35,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 }
 
 
+
+
 @BindingAdapter("animalApiStatus") //Attribute aus XML
 fun bindStatus(statusImageView: ImageView, status: AnimalApiStatus?) {
     when (status) {
