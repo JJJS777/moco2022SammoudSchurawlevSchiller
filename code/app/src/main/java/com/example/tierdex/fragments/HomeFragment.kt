@@ -45,6 +45,7 @@ class HomeFragment : Fragment() {
         listAllTask.addOnCompleteListener { result ->
             val items : List<StorageReference> = result.result!!.items
 
+
             items.forEachIndexed { index, item ->
                 item.downloadUrl.addOnSuccessListener {
                     feedList.add(Feed("User", it.toString()))

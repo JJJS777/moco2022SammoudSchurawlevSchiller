@@ -1,10 +1,23 @@
 <resources>
     <string name="app_name">TierDex</string>
+    <string name="action_settings">Settings</string>
+    <string name="message_no_permissions">The app cannot work without permissions</string>
+    <string name="label_ok">OK</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="home">Home</string>
-    <string name="kamera">Kamera</string>
-    <string name="document">Document</string>
-    <string name="User1">User_One</string>
-    <string name="User2">User_Two</string>
+    <string name="cd_take_picture">Take picture</string>
+    <string name="cb_open_gallery">Navigate to Gallery</string>
+    <string name="cb_switch">Switch between front and back cameras</string>
+    <string name="cb_timer">Select a timer</string>
+    <string name="home">home</string>
+    <string name="camera">camera</string>
+    <string name="document">document</string>
+
+    <string name="permission_required">Camera access is required to display the camera preview.</string>
+    <string name="ok">OK</string>
+    <string name="permission_granted">Permission is granted. You can use the camera now.</string>
+
+
+
 </resources>

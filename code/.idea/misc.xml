@@ -3,12 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_button_round.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_arrow_back.xml" value="0.1453125" />
+        <entry key="app/src/main/res/drawable-v24/ic_delete.xml" value="0.1453125" />
+        <entry key="app/src/main/res/drawable-v24/ic_flash_auto.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_flash_off.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_flash_on.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_grid_off.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_no_picture.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_outline_camera_front.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_outline_camera_rear.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable-v24/ic_share.xml" value="0.1453125" />
+        <entry key="app/src/main/res/drawable-v24/ic_take_picture.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.12916666666666668" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/fragment_preview_camera.xml" value="0.12916666666666668" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/fragment_third.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/item_view.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/picture_view.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/showSnackBar.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.23854166666666668" />
       </map>
     </option>
