@@ -24,6 +24,8 @@ private const val ARG_PARAM2 = "param2"
  */
 
 class AnimalListFragment : Fragment() {
+
+    private lateinit var binding: FragmentAnimalListBinding
     private val viewModel: AnimalViewModel by viewModels()
 
     /**
@@ -34,7 +36,12 @@ class AnimalListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentAnimalListBinding.inflate(inflater)
+        binding = FragmentAnimalListBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = viewLifecycleOwner
@@ -45,6 +52,12 @@ class AnimalListFragment : Fragment() {
         // Sets the adapter of the photosGrid RecyclerView
         binding.animalRecyclerView.adapter = AnimalAdapter()
 
-        return binding.root
+        binding.animalSearch.setOnClickListener { onSearchAnimal() }
+
+    }
+
+    private fun onSearchAnimal() {
+        val searchAnimal = binding.animalSearch.query.toString()
+        viewModel.onSearch( searchAnimal )
     }
 }
