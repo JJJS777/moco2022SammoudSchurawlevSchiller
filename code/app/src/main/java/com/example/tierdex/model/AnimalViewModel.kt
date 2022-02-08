@@ -32,8 +32,9 @@ class AnimalViewModel : ViewModel() {
     val apiInterface = AnimalApi.retrofitService.getData().enqueue( object : Callback<ApiResponse?> {
         override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
             if (response?.body() != null ) {
+                _animalProperties.value = response.body()
                 _status.value = AnimalApiStatus.DONE
-                onSearch()
+                //onSearch()
             }
 
         }
@@ -52,8 +53,7 @@ class AnimalViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = AnimalApiStatus.LOADING
             try {
-                _animalProperties.value = AnimalApi.retrofitService.getData()
-                _status.value = AnimalApiStatus.DONE
+
             } catch (e: Exception){
                 _status.value = AnimalApiStatus.ERROR
                 Log.e("conn_err", e.message.toString())
