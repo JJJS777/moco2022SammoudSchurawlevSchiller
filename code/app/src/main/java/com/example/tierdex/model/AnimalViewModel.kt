@@ -18,6 +18,7 @@ class AnimalViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<AnimalApiStatus>()
+
     // The external immutable LiveData for the request status
     val status: LiveData<AnimalApiStatus> = _status
 
@@ -29,9 +30,9 @@ class AnimalViewModel : ViewModel() {
     }
 
 
-    val apiInterface = AnimalApi.retrofitService.getData().enqueue( object : Callback<ApiResponse?> {
+    val apiInterface = AnimalApi.retrofitService.getData().enqueue(object : Callback<ApiResponse?> {
         override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
-            if (response?.body() != null ) {
+            if (response?.body() != null) {
                 _animalProperties.value = response.body()
                 _status.value = AnimalApiStatus.DONE
                 //onSearch()
@@ -45,19 +46,5 @@ class AnimalViewModel : ViewModel() {
         }
     })
 
-    fun onSearch(){}
-
-
-/*    private fun getAnimalData(){
-
-        viewModelScope.launch {
-            _status.value = AnimalApiStatus.LOADING
-            try {
-
-            } catch (e: Exception){
-                _status.value = AnimalApiStatus.ERROR
-                Log.e("conn_err", e.message.toString())
-            }
-        }
-    }*/
-}
+    fun onSearch() {}
+}    
