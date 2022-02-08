@@ -32,18 +32,9 @@ private val retrofit = Retrofit.Builder()
 interface AnimalApiService {
     @GET("ws/search.json")
     fun getData(
-        @Query("q") q: String ): Call<ApiResponse>
-}
-
-
-/*
-interface AnimalApiService {
-    @GET("ws/search.json")
-    fun getData(
         @Query("q") q: String,
-        @Query("fq") fq: String = "imageAvailable" ): Call<ApiResponse>
+        @Query("fq") fq: String): Call<ApiResponse>
 }
-*/
 
 /**
  * A public Api object that exposes the lazy-initialized Retrofit service
