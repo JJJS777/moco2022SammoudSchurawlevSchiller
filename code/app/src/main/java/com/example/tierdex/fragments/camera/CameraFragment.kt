@@ -1,17 +1,12 @@
 package com.example.tierdex.fragments.camera
 
 import android.Manifest
-import android.annotation.SuppressLint
-import android.content.ContentValues
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.hardware.display.DisplayManager
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.*
-import android.provider.MediaStore
-import android.provider.Telephony.Mms.Part.FILENAME
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,7 +14,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
-import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.core.ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -34,10 +28,8 @@ import androidx.camera.core.ImageCapture.Metadata
 import androidx.camera.view.PreviewView
 import androidx.core.net.toFile
 import androidx.core.view.setPadding
-import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.tierdex.MainActivity
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
 import java.util.concurrent.ExecutorService
@@ -72,6 +64,9 @@ class CameraFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         // Make sure that all permissions are still present
+        if(managePermissions.checkAllPermissions()){
+            startCamera()
+        }
     }
 
     override fun onDestroyView() {

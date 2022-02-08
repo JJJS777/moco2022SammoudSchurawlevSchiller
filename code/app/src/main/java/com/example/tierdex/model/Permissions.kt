@@ -59,4 +59,8 @@ class Permissions(val activity: Activity, val list: Array<String>, val code:Int)
         if (result == PackageManager.PERMISSION_GRANTED) return true
         return false
     }
+
+    fun checkAllPermissions(): Boolean {
+        return isPermissionsGranted() == list.size
+    }
 }
