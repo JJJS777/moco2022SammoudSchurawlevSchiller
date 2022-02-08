@@ -26,25 +26,26 @@ class AnimalViewModel : ViewModel() {
     val animalProperties: LiveData<ApiResponse> = _animalProperties
 
     init {
-        //getAnimalData()
+        onSearch( "shark" )
     }
 
 
-    val apiInterface = AnimalApi.retrofitService.getData("shark").enqueue(object : Callback<ApiResponse?> {
-        override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
-            if (response?.body() != null) {
-                _animalProperties.value = response.body()
-                _status.value = AnimalApiStatus.DONE
-                //onSearch()
+
+
+    fun onSearch( animalQueryPara: String ) {
+        val apiInterface = AnimalApi.retrofitService.getData(animalQueryPara).enqueue(object : Callback<ApiResponse?> {
+            override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
+                if (response?.body() != null) {
+                    _animalProperties.value = response.body()
+                    _status.value = AnimalApiStatus.DONE
+                }
+
             }
 
-        }
-
-        override fun onFailure(call: Call<ApiResponse?>, t: Throwable) {
-            _status.value = AnimalApiStatus.ERROR
-            Log.e("conn_err", t.message.toString())
-        }
-    })
-
-    fun onSearch() {}
+            override fun onFailure(call: Call<ApiResponse?>, t: Throwable) {
+                _status.value = AnimalApiStatus.ERROR
+                Log.e("conn_err", t.message.toString())
+            }
+        })
+    }
 }

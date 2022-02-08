@@ -71,6 +71,6 @@ class AnimalListFragment : Fragment() {
     private fun onSearchAnimal() {
        val searchAnimal = binding.animalSearch.query.toString()
        Log.d("eingabe Suchfeld", searchAnimal)
-       //viewModel.onSearch(  )
+       viewModel.onSearch( searchAnimal )
     }
 }
