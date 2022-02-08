@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://bie.ala.org.au/"
 
@@ -30,8 +31,7 @@ private val retrofit = Retrofit.Builder()
 
 interface AnimalApiService {
     @GET("ws/search.json")
-    //TODO Quaery Parameter einfügen...
-    fun getData(): Call<ApiResponse>
+    fun getData( @Query("q") q: String ): Call<ApiResponse>
 }
 
 /**

@@ -30,7 +30,7 @@ class AnimalViewModel : ViewModel() {
     }
 
 
-    val apiInterface = AnimalApi.retrofitService.getData().enqueue(object : Callback<ApiResponse?> {
+    val apiInterface = AnimalApi.retrofitService.getData("shark").enqueue(object : Callback<ApiResponse?> {
         override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
             if (response?.body() != null) {
                 _animalProperties.value = response.body()
@@ -47,4 +47,4 @@ class AnimalViewModel : ViewModel() {
     })
 
     fun onSearch() {}
-}    
+}
