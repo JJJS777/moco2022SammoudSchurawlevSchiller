@@ -28,7 +28,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface AnimalApiService {
-    @GET("ws/search.json?q=shark")
+    @GET("ws/search.json")
     //TODO Quaery Parameter einfügen...
     suspend fun getData(): ApiResponse
 }
