@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tierdex.network.AnimalApi
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 
 enum class AnimalApiStatus { LOADING, ERROR, DONE  }
@@ -22,10 +25,29 @@ class AnimalViewModel : ViewModel() {
     val animalProperties: LiveData<ApiResponse> = _animalProperties
 
     init {
-        getAnimalData()
+        //getAnimalData()
     }
 
-    private fun getAnimalData(){
+
+    val apiInterface = AnimalApi.retrofitService.getData().enqueue( object : Callback<ApiResponse?> {
+        override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
+            if (response?.body() != null ) {
+                _status.value = AnimalApiStatus.DONE
+                onSearch()
+            }
+
+        }
+
+        override fun onFailure(call: Call<ApiResponse?>, t: Throwable) {
+            _status.value = AnimalApiStatus.ERROR
+            Log.e("conn_err", t.message.toString())
+        }
+    })
+
+    fun onSearch(){}
+
+
+/*    private fun getAnimalData(){
 
         viewModelScope.launch {
             _status.value = AnimalApiStatus.LOADING
@@ -37,5 +59,5 @@ class AnimalViewModel : ViewModel() {
                 Log.e("conn_err", e.message.toString())
             }
         }
-    }
+    }*/
 }

@@ -4,6 +4,7 @@ import com.example.tierdex.model.AnimalData
 import com.example.tierdex.model.ApiResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
@@ -28,9 +29,9 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface AnimalApiService {
-    @GET("ws/search.json?q=shark")
+    @GET("ws/search.json")
     //TODO Quaery Parameter einfügen...
-    suspend fun getData(): ApiResponse
+    fun getData(): Call<ApiResponse>
 }
 
 /**
@@ -39,3 +40,4 @@ interface AnimalApiService {
 object AnimalApi {
     val retrofitService: AnimalApiService by lazy { retrofit.create(AnimalApiService::class.java) }
 }
+
