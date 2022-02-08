@@ -15,14 +15,15 @@ class ItemAdapter(
     private val context: Fragment,
     private val dataset: List<Feed>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class ItemViewHolder( view: View ) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.ProfileTitle)
         val imageView : ImageView = view.findViewById(R.id.ivPost)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         // create a new View
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.item_view,parent,false)
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.item_view,
+            parent,false)
         return ItemViewHolder(adapterLayout)
     }
 
