@@ -2,15 +2,12 @@ package com.example.tierdex.fragments.camera
 
 import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.hardware.display.DisplayManager
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,14 +15,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.tierdex.R
 import com.example.tierdex.databinding.CameraFragmentBinding
-import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.lang.Math.*
 import java.text.SimpleDateFormat
