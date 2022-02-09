@@ -201,7 +201,7 @@ class CameraFragment : Fragment() {
                         val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
 
                         photoModel.addItem(Photo(savedUri))
-
+                        cameraExecutor.shutdown()
                         showPhoto()
 
 

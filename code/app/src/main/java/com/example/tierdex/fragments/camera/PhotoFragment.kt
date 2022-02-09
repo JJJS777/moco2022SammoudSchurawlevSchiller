@@ -33,15 +33,12 @@ class PhotoFragment : Fragment() {
         showPhoto(uri)
 
         binding.backButton.setOnClickListener {
+            
         }
 
         binding.shareButton.setOnClickListener {
 
         }
-
-
-
-
     }
 
     private fun showPhoto(uri: Uri){
