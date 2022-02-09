@@ -28,4 +28,6 @@
     <string name="ok">OK</string>
     <string name="permission_granted">Permission is granted. You can use the camera now.</string>
     <string name="camera">camera</string>
+    <string name="grid_animal_name">Name</string>
+    <string name="binomial_name">Binomial Name</string>
 </resources>
