@@ -9,6 +9,8 @@
     <string name="User2">User_Two</string>
     <string name="animal1">Tiger</string>
     <string name="animal2">Otter</string>
+    <string name="camera">Camera</string>
+    <string name="TierName">tierName</string>
     <array name="animal3">
         <item id="1" />
         <item class="Mammalia" />

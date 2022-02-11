@@ -31,6 +31,5 @@ class HomeFragment : Fragment() {
 
         binding.recyclerView.adapter = ItemAdapter(this, myDataset)
         binding.recyclerView.setHasFixedSize(true)
-
     }
 }

@@ -33,5 +33,4 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragment_container,fragment)
         transaction.commit()
     }
-
 }
