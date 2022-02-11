@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-11T16:59:00.780Z" agent="5.0 (Macintosh)" etag="-4LrfJODZ0-B3p5Rs1wR" version="16.5.6" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2022-02-11T17:10:46.063Z" agent="5.0 (Macintosh)" etag="o48sW_Iq-kTKZ6nLiDBg" version="16.5.6" type="github" pages="3">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="ERM">
     <mxGraphModel dx="946" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -460,13 +460,10 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_fpZkdXMLWeIl8t8zkHf" name="Aktivitätsdiagramm">
-    <mxGraphModel dx="4201" dy="1118" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3664" dy="1938" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-0" />
         <mxCell id="ZiZvBB_XBpYenlgErEXp-1" parent="ZiZvBB_XBpYenlgErEXp-0" />
-        <mxCell id="oQGC2mGDCE0NWjQQK_9V-13" value="Use Case Add Discovery" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1690" y="70" width="1000" height="1140" as="geometry" />
-        </mxCell>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="ZiZvBB_XBpYenlgErEXp-1" source="ZiZvBB_XBpYenlgErEXp-3" target="ZiZvBB_XBpYenlgErEXp-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-820.5" y="90" as="sourcePoint" />
@@ -514,7 +511,7 @@
           <mxGeometry x="-1311" y="550" width="142" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-59" value="&lt;h1&gt;Use Case &quot;New Discovery&quot;&lt;br&gt;&lt;/h1&gt;&lt;p&gt;1- User Öffnet App&lt;/p&gt;&lt;p&gt;2- User Klickt auf &quot;New Discovery&quot;&lt;/p&gt;&lt;p&gt;3- System öffnet &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;AddDoscoveryFragment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;4- User trägt folgende Infos ein &lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;i, Ort (GPS Location)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;ii, Datum / Uhrzeit&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iii, (Tier-) Art&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;a, startet Suchfunktion, wo nach &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;dem entsprechenden Tier &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;gesucht werden kann&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iv, Anzahl&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;v, Geschlecht&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vi, alter / status (Array mit Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vii, art der beobachtung (array mit &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;viii, Bemerkung&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;5- User klickt auf speichern&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-2160" y="50" width="250" height="560" as="geometry" />
+          <mxGeometry x="-2100" y="-350" width="250" height="560" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-1" target="ZiZvBB_XBpYenlgErEXp-58">
           <mxGeometry relative="1" as="geometry" />
@@ -545,7 +542,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-6" value="Kamera &lt;br&gt;auswählen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1580" y="625" width="140" height="40" as="geometry" />
+          <mxGeometry x="-1877" y="625" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-7" target="oQGC2mGDCE0NWjQQK_9V-14">
           <mxGeometry relative="1" as="geometry" />
@@ -570,30 +567,21 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-14" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1055" y="900" width="30" height="30" as="geometry" />
+          <mxGeometry x="-1055" y="745" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-17" value="Daten auf Backend &lt;br&gt;Server speichern" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1330" y="895" width="140" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="oQGC2mGDCE0NWjQQK_9V-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-18" target="oQGC2mGDCE0NWjQQK_9V-14">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="-760" y="1000" />
-              <mxPoint x="-1040" y="1000" />
-            </Array>
-          </mxGeometry>
+          <mxGeometry x="-1330" y="740" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-18" value="Daten in Room&lt;br&gt;Speichern" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-830" y="895" width="140" height="40" as="geometry" />
+          <mxGeometry x="-830" y="740" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-23" value="&lt;div align=&quot;left&quot;&gt;Annahme: lässt mobile Internetverbindung zu und erlaub auch das Uploaden von Entdeckungen &lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-720" y="750" width="310" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="oQGC2mGDCE0NWjQQK_9V-25" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-775" y="1010" width="30" height="30" as="geometry" />
+          <mxGeometry x="-600" y="750" width="310" height="80" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-28" target="oQGC2mGDCE0NWjQQK_9V-30">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1662" y="745" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-35" value="[ Foto vorhanden ]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="oQGC2mGDCE0NWjQQK_9V-33">
           <mxGeometry x="-0.2971" relative="1" as="geometry">
@@ -609,13 +597,42 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-28" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1525" y="730" width="30" height="30" as="geometry" />
+          <mxGeometry x="-1822" y="730" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-29" value="Foto Aufnehmen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1770" y="725" width="140" height="40" as="geometry" />
+          <mxGeometry x="-2067" y="725" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-30" target="oQGC2mGDCE0NWjQQK_9V-37">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-30" value="Foto aus Galerie&lt;br&gt; auswählen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
-          <mxGeometry x="-1365" y="725" width="140" height="40" as="geometry" />
+          <mxGeometry x="-1630" y="725" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-37" target="oQGC2mGDCE0NWjQQK_9V-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-37" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+          <mxGeometry x="-1575" y="820" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-39" target="oQGC2mGDCE0NWjQQK_9V-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-39" value="&lt;div&gt;Auswahl &lt;br&gt;&lt;/div&gt;&lt;div&gt;bestätigen&lt;/div&gt;" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+          <mxGeometry x="-1630" y="890" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-41">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-1040" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-41" value="Foto zu Entdeckung &lt;br&gt;Hinzufügen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+          <mxGeometry x="-1630" y="1050" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-42" target="oQGC2mGDCE0NWjQQK_9V-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oQGC2mGDCE0NWjQQK_9V-42" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+          <mxGeometry x="-1575" y="980" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
