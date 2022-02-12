@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tierdex.network.AnimalApi
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 
 enum class AnimalApiStatus { LOADING, ERROR, DONE  }
@@ -15,6 +18,7 @@ class AnimalViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<AnimalApiStatus>()
+
     // The external immutable LiveData for the request status
     val status: LiveData<AnimalApiStatus> = _status
 
@@ -22,20 +26,28 @@ class AnimalViewModel : ViewModel() {
     val animalProperties: LiveData<ApiResponse> = _animalProperties
 
     init {
-        getAnimalData()
+        onSearch( "shark" )
     }
 
-    private fun getAnimalData(){
 
-        viewModelScope.launch {
-            _status.value = AnimalApiStatus.LOADING
-            try {
-                _animalProperties.value = AnimalApi.retrofitService.getData()
-                _status.value = AnimalApiStatus.DONE
-            } catch (e: Exception){
-                _status.value = AnimalApiStatus.ERROR
-                Log.e("conn_err", e.message.toString())
+
+
+    fun onSearch( animalQueryPara: String ) {
+        val apiInterface = AnimalApi.retrofitService
+            .getData(animalQueryPara, "imageAvailable:true")
+            .enqueue(object : Callback<ApiResponse?> {
+            override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {
+                if (response?.body() != null) {
+                    _animalProperties.value = response.body()
+                    _status.value = AnimalApiStatus.DONE
+                }
+
             }
-        }
+
+            override fun onFailure(call: Call<ApiResponse?>, t: Throwable) {
+                _status.value = AnimalApiStatus.ERROR
+                Log.e("conn_err", t.message.toString())
+            }
+        })
     }
 }

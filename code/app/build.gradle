@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
@@ -9,7 +11,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.tierdex"
+        applicationId "com.main.tierdex"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -37,14 +39,25 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+
+    // Moshi
+    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+
+    // Retrofit with Moshi Converter
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    // Coil
+    implementation "io.coil-kt:coil:1.4.0"
+
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "com.google.android.material:material:$material_version"
 
     // Lifecycle libraries
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // Navigation libraries
@@ -60,16 +73,31 @@ dependencies {
     // dependency for creating a circle image.
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    // Moshi
-    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+    // FireBase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
 
-    // Retrofit with Moshi Converter
-    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    // Declare the dependency for the Cloud Firestore library
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
 
-    // Coil
-    implementation "io.coil-kt:coil:1.4.0"
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
-    // ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    // Cam
+    // CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-core:1.0.2"
+    implementation "androidx.camera:camera-camera2:1.0.2"
+    implementation "androidx.camera:camera-lifecycle:1.0.2"
+    implementation "androidx.camera:camera-view:1.1.0-beta01"
+    implementation "androidx.camera:camera-extensions:1.1.0-beta01"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation("io.coil-kt:coil-video:1.1.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
 
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }
