@@ -16,5 +16,5 @@ data class AnimalData(
     // used to map img_src from the JSON to imgSrcUrl in our class
     @Json(name = "imageUrl") val imgSrcUrl: String,
     val name: String,
-    @Json (name = "scientificName") val binomialName: String,
-    @Json(name = "acceptedConceptName") val binomialNameAlt: String )
+    @Json (name = "scientificName") val binomialName: String?,
+    @Json(name = "acceptedConceptName") val binomialNameAlt: String? )

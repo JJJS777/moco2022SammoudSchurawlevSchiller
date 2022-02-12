@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tierdex.fragments.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/animalListFragment"
+        android:name="com.example.tierdex.fragments.AnimalListFragment"
+        android:label="AnimalListFragment" />
+    <fragment
+        android:id="@+id/animalDetailFragment"
+        android:name="com.example.tierdex.fragments.AnimalDetailFragment"
+        android:label="AnimalDetailFragment" />
+    <fragment android:id="@+id/addDiscoveryFragment" />
+</navigation>
