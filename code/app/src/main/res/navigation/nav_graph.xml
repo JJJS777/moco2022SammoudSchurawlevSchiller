@@ -17,5 +17,9 @@
         android:id="@+id/animalDetailFragment"
         android:name="com.example.tierdex.fragments.AnimalDetailFragment"
         android:label="AnimalDetailFragment" />
-    <fragment android:id="@+id/addDiscoveryFragment" />
+    <fragment
+        android:id="@+id/addDiscoveryFragment"
+        android:name="com.example.tierdex.addDiscoveryFragment"
+        android:label="add_discovery_fragment"
+        tools:layout="@layout/add_discovery_fragment" />
 </navigation>

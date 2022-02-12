@@ -9,6 +9,12 @@
     tools:context=".fragments.camera.CameraFragment"
     android:id="@+id/cameraLayout">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/photo_view_pager"
+        android:visibility="invisible"/>
+
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="0dp"

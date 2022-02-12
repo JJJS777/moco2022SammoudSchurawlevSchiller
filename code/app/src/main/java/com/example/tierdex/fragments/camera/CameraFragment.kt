@@ -10,6 +10,7 @@ import android.os.*
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,13 @@ import androidx.camera.core.ImageCapture.Metadata
 import androidx.camera.view.PreviewView
 import androidx.core.net.toFile
 import androidx.core.view.setPadding
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
+import com.example.tierdex.model.Photo
+import com.example.tierdex.model.PhotoViewModel
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -39,7 +43,7 @@ import java.util.concurrent.Executors
 typealias LumaListener = (luma: Double) -> Unit
 
 class CameraFragment : Fragment() {
-
+    private val photoModel: PhotoViewModel by viewModels()
     private var _binding: CameraFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -81,6 +85,7 @@ class CameraFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = CameraFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -194,13 +199,12 @@ class CameraFragment : Fragment() {
 
                     override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                         val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
-                        Log.d(TAG, "Photo capture succeeded: $savedUri")
 
-                        // We can only change the foreground Drawable using API level 23+ API
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            // Update the gallery thumbnail with latest picture taken
-                            setGalleryThumbnail(savedUri)
-                        }
+                        photoModel.addItem(Photo(savedUri))
+                        cameraExecutor.shutdown()
+                        showPhoto()
+
+
                         // If the folder selected is an external media directory, this is
                         // unnecessary but otherwise other apps will not be able to access our
                         // images unless we scan them using [MediaScannerConnection]
@@ -229,6 +233,12 @@ class CameraFragment : Fragment() {
         }
     }
 
+    private fun showPhoto(){
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.cameraLayout,PhotoFragment())
+            .addToBackStack("camera")
+        transaction.commit()
+    }
     private fun setGalleryThumbnail(uri: Uri) {
         // Run the operations in the view's thread
         binding.btnGallery.let { photoViewButton ->
