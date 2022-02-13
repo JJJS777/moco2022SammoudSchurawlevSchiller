@@ -41,7 +41,7 @@ class Permissions(val activity: Activity, val list: Array<String>, val code:Int)
         val permission = deniedPermission()
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
             // Show an explanation asynchronously
-            Toast.makeText(activity, "Camera can't function without your permission.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Need permission to access.", Toast.LENGTH_SHORT).show()
         } else {
             ActivityCompat.requestPermissions(activity, list, code)
         }

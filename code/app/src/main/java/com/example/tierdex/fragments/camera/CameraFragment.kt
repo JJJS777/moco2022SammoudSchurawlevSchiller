@@ -30,12 +30,15 @@ import androidx.camera.view.PreviewView
 import androidx.core.net.toFile
 import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
 import com.example.tierdex.model.Photo
 import com.example.tierdex.model.PhotoViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -93,15 +96,18 @@ class CameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        outputDirectory = getOutputDirectory(requireContext())
+        initGallerie()
+
         managePermissions = Permissions(requireActivity(), PERMISSIONS, PERMISSION_CODE)
         managePermissions.checkPermissions()
 
-        outputDirectory = getOutputDirectory(requireContext())
         cameraExecutor = Executors.newSingleThreadExecutor()
         startCamera()
 
         binding.run {
             btnTakePicture.setOnClickListener { takephoto() }
+            btnGallery.setOnClickListener { showGallerie() }
         }
     }
 
@@ -201,8 +207,6 @@ class CameraFragment : Fragment() {
                         val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
 
                         photoModel.addItem(Photo(savedUri))
-                        cameraExecutor.shutdown()
-                        showPhoto()
 
 
                         // If the folder selected is an external media directory, this is
@@ -217,6 +221,7 @@ class CameraFragment : Fragment() {
                         ) { _, uri ->
                             Log.d(TAG, "Image capture scanned into media store: $uri")
                         }
+                        showPhoto()
                     }
                 }
             )
@@ -233,12 +238,17 @@ class CameraFragment : Fragment() {
         }
     }
 
-    private fun showPhoto(){
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.cameraLayout,PhotoFragment())
-            .addToBackStack("camera")
-        transaction.commit()
+    private fun initGallerie(){
+        // In the background, load latest photo taken (if any) for gallery thumbnail
+        lifecycleScope.launch(Dispatchers.IO) {
+            outputDirectory.listFiles { file ->
+                EXTENSION_WHITELIST.contains(file.extension.uppercase(Locale.ROOT))
+            }?.maxOrNull()?.let {
+                setGalleryThumbnail(Uri.fromFile(it))
+            }
+        }
     }
+
     private fun setGalleryThumbnail(uri: Uri) {
         // Run the operations in the view's thread
         binding.btnGallery.let { photoViewButton ->
@@ -253,6 +263,22 @@ class CameraFragment : Fragment() {
                     .into(photoViewButton)
             }
         }
+    }
+
+    private fun showPhoto(){
+        cameraExecutor.shutdown()
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.cameraLayout,PhotoFragment())
+            .addToBackStack("camera")
+        transaction.commit()
+    }
+
+    private fun showGallerie(){
+        cameraExecutor.shutdown()
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.cameraLayout,GallerieFragment())
+            .addToBackStack("camera")
+        transaction.commit()
     }
 
 
@@ -275,7 +301,6 @@ class CameraFragment : Fragment() {
         // The permissions we need for the app to work properly
         private val PERMISSIONS = mutableListOf(
             Manifest.permission.CAMERA,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
         ).apply {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 add(Manifest.permission.ACCESS_MEDIA_LOCATION)

@@ -5,11 +5,11 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home"/>
     <item
-        android:id="@+id/ic_input"
+        android:id="@+id/ic_camera"
         android:icon="@drawable/ic_baseline_camera_24"
         android:title="@string/camera"/>
     <item
-        android:id="@+id/ic_input2"
+        android:id="@+id/ic_document"
         android:icon="@drawable/ic_baseline_insert_drive_file_24"
         android:title="@string/document"/>
 </menu>
