@@ -7,12 +7,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
-    <string name="kamera">Kamera</string>
-    <string name="document">Document</string>
+    <string name="add_discovery">Add Discovery</string>
+    <string name="animal_list">Animals</string>
     <string name="User1">User_One</string>
     <string name="User2">User_Two</string>
     <string name="animal1">Tiger</string>
     <string name="animal2">Otter</string>
+    <string name="camera">Camera</string>
+    <string name="TierName">tierName</string>
     <array name="animal3">
         <item id="1" />
         <item class="Mammalia" />
@@ -28,5 +30,6 @@
     <string name="permission_required">Camera access is required to display the camera preview.</string>
     <string name="ok">OK</string>
     <string name="permission_granted">Permission is granted. You can use the camera now.</string>
-    <string name="camera">camera</string>
+    <string name="grid_animal_name">Name</string>
+    <string name="binomial_name">Binomial Name</string>
 </resources>
