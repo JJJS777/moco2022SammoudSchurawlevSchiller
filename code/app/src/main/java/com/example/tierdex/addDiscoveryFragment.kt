@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
 
 class addDiscoveryFragment : Fragment() {
 
@@ -20,6 +22,12 @@ class addDiscoveryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.add_discovery_fragment, container, false)
+    }
+
+    lateinit var binding : AddDiscoveryFragmentBinding
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
