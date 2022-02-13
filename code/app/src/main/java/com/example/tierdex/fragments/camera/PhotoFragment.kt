@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.tierdex.MainActivity
 import com.example.tierdex.databinding.FragmentPhotoBinding
 import com.example.tierdex.model.PhotoViewModel
+import java.io.File
 
 class PhotoFragment : Fragment() {
 
@@ -33,11 +35,11 @@ class PhotoFragment : Fragment() {
         showPhoto(uri)
 
         binding.backButton.setOnClickListener {
-            
+            TODO()
         }
 
         binding.shareButton.setOnClickListener {
-
+            TODO()
         }
     }
 
@@ -47,4 +49,13 @@ class PhotoFragment : Fragment() {
             .into(binding.photoViewPager)
     }
 
+    companion object{
+        private const val FILE_NAME_KEY = "file_name"
+
+        fun create(image: File) = PhotoFragment().apply {
+            arguments = Bundle().apply {
+                putString(FILE_NAME_KEY, image.absolutePath)
+            }
+        }
+    }
 }

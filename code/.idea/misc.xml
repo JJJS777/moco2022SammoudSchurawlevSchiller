@@ -3,22 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-        <entry key="../../../../../../../../../../layout/custom_preview.xml" value="0.2265625" />
-        <entry key="app/src/main/res/drawable/ic_broken_image.xml" value="0.4197916666666667" />
-        <entry key="app/src/main/res/drawable/ic_connection_error.xml" value="0.4197916666666667" />
-        <entry key="app/src/main/res/drawable/loading_img.xml" value="0.4197916666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/animal_view.xml" value="0.3452054794520548" />
-        <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.23125" />
-        <entry key="app/src/main/res/layout/fragment_animal_detail.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_animal_list.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23125" />
-        <entry key="app/src/main/res/layout/fragment_third.xml" value="0.3704710144927536" />
-        <entry key="app/src/main/res/layout/item_view.xml" value="0.2803442028985507" />
-        <entry key="app/src/main/res/layout/picture_view.xml" value="0.23125" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.37604166666666666" />
-=======
         <entry key="app/src/main/res/drawable-v24/bg_button_round.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/ic_arrow_back.xml" value="0.1453125" />
         <entry key="app/src/main/res/drawable-v24/ic_delete.xml" value="0.1453125" />
@@ -32,33 +16,22 @@
         <entry key="app/src/main/res/drawable-v24/ic_share.xml" value="0.1453125" />
         <entry key="app/src/main/res/drawable-v24/ic_take_picture.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.209375" />
-<<<<<<< HEAD
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.55" />
-        <entry key="app/src/main/res/layout/add_discovery_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/animal_view.xml" value="0.22291666666666668" />
-        <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.12916666666666668" />
-        <entry key="app/src/main/res/layout/fragment_animal_list.xml" value="0.16032608695652173" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/fragment_preview_camera.xml" value="0.12916666666666668" />
-        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/fragment_third.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/item_view.xml" value="0.1" />
-=======
+        <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.1203125" />
         <entry key="app/src/main/res/drawable/ic_photo.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_formular.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_gallerie.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/fragment_preview_camera.xml" value="0.12916666666666668" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/fragment_third.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/grid_imageView.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/item_view.xml" value="0.25" />
->>>>>>> main
         <entry key="app/src/main/res/layout/picture_view.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/showSnackBar.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.23854166666666668" />
->>>>>>> addDiscovery
       </map>
     </option>
   </component>
