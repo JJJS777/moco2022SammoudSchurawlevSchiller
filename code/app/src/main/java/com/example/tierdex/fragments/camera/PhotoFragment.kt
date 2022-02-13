@@ -40,7 +40,7 @@ class PhotoFragment : Fragment() {
         }
 
         binding.shareButton.setOnClickListener {
-
+            TODO()
         }
     }
 
