@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-14T09:23:18.219Z" agent="5.0 (Macintosh)" etag="00i9GsJcn9V5KFiFN_E9" version="16.5.6" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2022-02-14T09:24:44.826Z" agent="5.0 (Macintosh)" etag="5aFDkr4cEp8aHftVPOck" version="16.5.6" type="github" pages="4">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="ERM">
     <mxGraphModel dx="946" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -460,7 +460,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_fpZkdXMLWeIl8t8zkHf" name="Aktivitätsdiagramm">
-    <mxGraphModel dx="5634" dy="3219" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="6461" dy="4388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-0" />
         <mxCell id="ZiZvBB_XBpYenlgErEXp-1" parent="ZiZvBB_XBpYenlgErEXp-0" />
@@ -511,7 +511,7 @@
           <mxGeometry x="-1316" y="130" width="142" height="40" as="geometry" />
         </mxCell>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-59" value="&lt;h1&gt;Use Case &quot;New Discovery&quot;&lt;br&gt;&lt;/h1&gt;&lt;p&gt;1- User Öffnet App&lt;/p&gt;&lt;p&gt;2- User Klickt auf &quot;New Discovery&quot;&lt;/p&gt;&lt;p&gt;3- System öffnet &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;AddDoscoveryFragment&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;4- User trägt folgende Infos ein &lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;i, Ort (GPS Location)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;ii, Datum / Uhrzeit&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iii, (Tier-) Art&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;a, startet Suchfunktion, wo nach &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;dem entsprechenden Tier &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;gesucht werden kann&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;iv, Anzahl&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;v, Geschlecht&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vi, alter / status (Array mit Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;vii, art der beobachtung (array mit &lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;Optionen)&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;viii, Bemerkung&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;5- User klickt auf speichern&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-2100" y="-350" width="250" height="560" as="geometry" />
+          <mxGeometry x="-2640" y="-960" width="250" height="560" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-1" target="ZiZvBB_XBpYenlgErEXp-58" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -552,9 +552,6 @@
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-18" value="Daten in Room&lt;br&gt;Speichern" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
           <mxGeometry x="-890" y="1892.5" width="140" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="oQGC2mGDCE0NWjQQK_9V-23" value="&lt;div align=&quot;left&quot;&gt;Annahme: lässt mobile Internetverbindung zu und erlaub auch das Uploaden von Entdeckungen &lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-600" y="900" width="310" height="80" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-28" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -651,20 +648,20 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-11" value="" style="rhombus;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-540" y="-60" width="30" height="30" as="geometry" />
+          <mxGeometry x="-2690" y="-1340" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-12" value="Action1" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-790" y="-65" width="140" height="40" as="geometry" />
+          <mxGeometry x="-2940" y="-1345" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="ZiZvBB_XBpYenlgErEXp-1" source="83hrAe5LwP8sL1lfE6_o-13" target="83hrAe5LwP8sL1lfE6_o-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-13" value="Permission&lt;br&gt;anfragen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-400" y="-65" width="140" height="40" as="geometry" />
+          <mxGeometry x="-2550" y="-1345" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="ZiZvBB_XBpYenlgErEXp-1" source="83hrAe5LwP8sL1lfE6_o-18" target="83hrAe5LwP8sL1lfE6_o-12" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-455" y="45" as="targetPoint" />
+            <mxPoint x="-2605" y="-1235" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-24" value="[ permission&lt;br&gt;erteilen ]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="83hrAe5LwP8sL1lfE6_o-22" vertex="1" connectable="0">
@@ -681,10 +678,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-18" value="" style="rhombus;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-345" y="30" width="30" height="30" as="geometry" />
+          <mxGeometry x="-2495" y="-1250" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-21" value="Action1" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-210" y="25" width="140" height="40" as="geometry" />
+          <mxGeometry x="-2360" y="-1255" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="ZiZvBB_XBpYenlgErEXp-1" source="83hrAe5LwP8sL1lfE6_o-30" target="83hrAe5LwP8sL1lfE6_o-31" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -758,7 +755,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-40" value="permission &lt;br&gt;Prüfen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
-          <mxGeometry x="-595" y="-160" width="140" height="40" as="geometry" />
+          <mxGeometry x="-2745" y="-1440" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="83hrAe5LwP8sL1lfE6_o-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="ZiZvBB_XBpYenlgErEXp-1" source="83hrAe5LwP8sL1lfE6_o-42" target="83hrAe5LwP8sL1lfE6_o-30" edge="1">
           <mxGeometry relative="1" as="geometry" />
