@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-14T08:58:26.968Z" agent="5.0 (Macintosh)" etag="GQY64DBq5ufUAbvI_-KE" version="16.5.6" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2022-02-14T08:59:27.645Z" agent="5.0 (Macintosh)" etag="rTL_ZBKmfW4m6BiStUkT" version="16.5.6" type="github" pages="4">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="ERM">
     <mxGraphModel dx="946" dy="615" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
@@ -460,7 +460,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="_fpZkdXMLWeIl8t8zkHf" name="Aktivitätsdiagramm">
-    <mxGraphModel dx="4583" dy="2536" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3594" dy="1893" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="ZiZvBB_XBpYenlgErEXp-0" />
         <mxCell id="ZiZvBB_XBpYenlgErEXp-1" parent="ZiZvBB_XBpYenlgErEXp-0" />
@@ -603,6 +603,9 @@
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-39" value="&lt;div&gt;Auswahl &lt;br&gt;&lt;/div&gt;&lt;div&gt;bestätigen&lt;/div&gt;" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
           <mxGeometry x="-1510" y="1617.5" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-MufCpg50XzRRoAogY53-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="oQGC2mGDCE0NWjQQK_9V-41" target="-MufCpg50XzRRoAogY53-52">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="oQGC2mGDCE0NWjQQK_9V-41" value="Foto zu Entdeckung &lt;br&gt;Hinzufügen" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;" parent="ZiZvBB_XBpYenlgErEXp-1" vertex="1">
           <mxGeometry x="-1510" y="1777.5" width="140" height="40" as="geometry" />
@@ -891,6 +894,12 @@
         </mxCell>
         <mxCell id="-MufCpg50XzRRoAogY53-48" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
           <mxGeometry x="-1892" y="1547" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-MufCpg50XzRRoAogY53-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="ZiZvBB_XBpYenlgErEXp-1" source="-MufCpg50XzRRoAogY53-52" target="oQGC2mGDCE0NWjQQK_9V-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-MufCpg50XzRRoAogY53-52" value="" style="rhombus;" vertex="1" parent="ZiZvBB_XBpYenlgErEXp-1">
+          <mxGeometry x="-1260" y="1782" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
