@@ -1,39 +1,53 @@
 package com.example.tierdex.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tierdex.R
-import com.example.tierdex.model.Animal
+import com.example.tierdex.databinding.AnimalViewBinding
+import com.example.tierdex.model.AnimalData
 
-class AnimalAdapter( private val context: Fragment, private val animalDataSet: List<Animal> )
-    : RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder>() {
+/**
+ * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
+ * data, including computing diffs between lists.
+ */
+class AnimalAdapter
+    : ListAdapter<AnimalData, AnimalAdapter.AnimalViewHolder>(DiffCallback) {
 
-    class AnimalViewHolder( view: View )
-        : RecyclerView.ViewHolder( view ){
+    class AnimalViewHolder ( private var binding: AnimalViewBinding )
+        : RecyclerView.ViewHolder(binding.root){
+            fun bind( animalData : AnimalData ){
+                binding.animal = animalData
+                // This is important, because it forces the data binding to execute immediately,
+                // which allows the RecyclerView to make the correct view size measurements
+                binding.executePendingBindings()
+            }
+        }
 
-        val textView: TextView = view.findViewById( R.id.animal_title )
-        val imageView: ImageView = view.findViewById( R.id.animal_image )
+    /**
+     * Allows the RecyclerView to determine which items have changed when the [List] of
+     * [Animals] has been updated.
+     */
+    companion object DiffCallback : DiffUtil.ItemCallback<AnimalData>() {
+        override fun areItemsTheSame(oldItem: AnimalData, newItem: AnimalData): Boolean {
+            return oldItem.id == newItem.id
+        }
 
+        override fun areContentsTheSame(oldItem: AnimalData, newItem: AnimalData): Boolean {
+            return oldItem.imgSrcUrl == newItem.imgSrcUrl
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
-       val adapterLayout = LayoutInflater.from(parent.context)
-           .inflate( R.layout.animal_view, parent, false )
-
-       return AnimalViewHolder( adapterLayout )
+       return AnimalViewHolder(
+           AnimalViewBinding.inflate(LayoutInflater.from(parent.context))
+       )
     }
 
     override fun onBindViewHolder(holder: AnimalViewHolder, position: Int) {
-        val current = animalDataSet.get(position)
-        holder.textView.text = context.resources.getString( current.animalTitle )
-        holder.imageView.setImageResource( current.imgRes )
+        val animal = getItem(position)
+        holder.bind(animal)
     }
 
-    override fun getItemCount(): Int = animalDataSet.size
 }

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AnimalDetailFragment">
+
+    <data>
+        <variable
+            name="animal"
+            type="com.example.tierdex.model.AnimalData" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/animal_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:hint="Redback Spider"
+                android:text="@{animal.name}"/>
+
+            <ImageView
+                android:id="@+id/animal_image"
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{animal.imgSrcUrl}"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+
+            <TextView
+                android:id="@+id/animal_binomial_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:hint="Latrodectus hasselti"
+                android:text="@{animal.binomialName}"/>
+
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:rowCount="2"
+                app:columnCount="2">
+
+                <TextView
+                    android:id="@+id/grid_animal_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="@string/grid_animal_name"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/grid_animal_name_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:hint="Redback Spider"
+                    android:text="@{animal.name}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                <TextView
+                    android:id="@+id/grid_animal_binomial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="8dp"
+                    android:text="@string/binomial_name"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+                <TextView
+                    android:id="@+id/grid_animal_binomial_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:hint="Latrodectus hasselti"
+                    android:text="@{animal.binomialName}"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</layout>
+
+
