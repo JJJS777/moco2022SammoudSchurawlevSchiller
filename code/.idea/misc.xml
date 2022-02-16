@@ -3,24 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <entry key="app/src/main/res/layout/activity_loading.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/animal_list_fragment.xml" value="0.17760416666666667" />
-        <entry key="app/src/main/res/layout/fragment_add_discovery.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_add_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13949275362318841" />
-        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.13949275362318841" />
-        <entry key="app/src/main/res/layout/fragment_third.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/item_list_item.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.2125" />
-=======
-        <entry key="app/src/main/res/layout/animal_view.xml" value="0.3452054794520548" />
-        <entry key="app/src/main/res/layout/fragment_animal_list.xml" value="0.2803442028985507" />
-        <entry key="app/src/main/res/layout/item_view.xml" value="0.2803442028985507" />
->>>>>>> AnimalListFragment
-=======
         <entry key="app/src/main/res/drawable-v24/bg_button_round.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/ic_arrow_back.xml" value="0.1453125" />
         <entry key="app/src/main/res/drawable-v24/ic_delete.xml" value="0.1453125" />
@@ -38,7 +20,9 @@
         <entry key="app/src/main/res/drawable/ic_photo.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_formular.xml" value="0.20969202898550723" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/add_discovery_fragment.xml" value="0.3541666666666667" />
+        <entry key="app/src/main/res/layout/animal_view.xml" value="0.15443840579710144" />
+        <entry key="app/src/main/res/layout/camera_fragment.xml" value="0.3196258596810641" />
         <entry key="app/src/main/res/layout/fragment_gallerie.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_photo.xml" value="0.15625" />
@@ -50,7 +34,6 @@
         <entry key="app/src/main/res/layout/picture_view.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/showSnackBar.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.23854166666666668" />
->>>>>>> main
       </map>
     </option>
   </component>

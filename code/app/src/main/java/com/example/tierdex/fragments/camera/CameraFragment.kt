@@ -37,6 +37,8 @@ import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
 import com.example.tierdex.model.Photo
 import com.example.tierdex.model.PhotoViewModel
+import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
+import kotlinx.android.synthetic.main.camera_fragment.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
@@ -88,7 +90,9 @@ class CameraFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        val view = inflater.inflate(R.layout.camera_fragment, container, false)
+        view.btnTakePicture.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_photo_view_pager)}
+        view.btnGallery.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_galleryImageView)}
         _binding = CameraFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

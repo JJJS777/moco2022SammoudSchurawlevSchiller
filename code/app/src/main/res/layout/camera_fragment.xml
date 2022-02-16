@@ -26,8 +26,9 @@
 
     <ImageButton
         android:id="@+id/btnTakePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="146dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="50dp"
         android:background="@android:color/transparent"
         android:padding="32dp"
         android:src="@drawable/ic_take_picture"
