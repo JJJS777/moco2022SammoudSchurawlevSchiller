@@ -7,11 +7,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DiscoveredDao {
 
-//    @Query( "SELECT * FROM discovered ORDER BY tbl_animalID ASC")
-//    fun getdiscoveries( ): Flow<List<Discovered>>
+    @Query( "SELECT * FROM discovered ORDER BY discoID ASC")
+    fun getDiscoveries( ): Flow<List<Discovered>>
 
-//    @Query( "SELECT * FROM discovered WHERE tbl_animalID = :animalID" )
-//    fun getdiscovery( animalID: Int ): Flow<Discovered>
+    @Query( "SELECT * FROM discovered WHERE discoID = :discoID" )
+    fun getDiscovery( discoID: Int ): Flow<Discovered>
 
     @Insert( onConflict = OnConflictStrategy.IGNORE )
     suspend fun insert ( discovery : Discovered )

@@ -3,39 +3,12 @@ package com.example.tierdex.data.entities
 import androidx.room.*
 import java.sql.Date
 
-@Entity(
-    tableName = "discovered",
-//    foreignKeys = [
-//        ForeignKey(
-//            entity = Animals::class,
-//            parentColumns = ["animalID"],
-//            childColumns = ["tbl_animalID"])
-//    ]
-)
+@Entity( tableName = "discovered" )
 data class Discovered (
     @PrimaryKey(autoGenerate = true)
     val discoID: Int = 0,
-//    @ColumnInfo(index = true, name = "tbl_animalID")
-//    val tbl_animalID: Int,
-//    @ColumnInfo(name = "discoverytime")
-    val discoveryTime: String,
-    @ColumnInfo(name = "location")
-//    val gps_location: Int,
-//    @ColumnInfo(name = "picture")
-//    val picture: Int,
-//    @ColumnInfo(name = "description")
-//    val description: Int,
-//    @ColumnInfo(name = "is_alive")
-    val is_alive: String
-    ) { }
-
-data class DiscoveredAnimals (
-    @Embedded val animal: Animals,
-    @Relation(
-        parentColumn = "animalID",
-        entityColumn = "tbl_animalID"
-    )
-    val discoveries: List<Discovered>
-    )
+    @ColumnInfo(name = "name")
+    val discoName: String,
+) { }
 
 

@@ -6,9 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavGraph
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.example.tierdex.data.entities.Discovered
 import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
 import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 
@@ -18,30 +19,55 @@ class addDiscoveryFragment : Fragment() {
         fun newInstance() = addDiscoveryFragment()
     }
 
-    private lateinit var viewModel: AddDiscoveryViewModel
+    lateinit var disco: Discovered
+    lateinit var binding : AddDiscoveryFragmentBinding
 
+    // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
+    // to share the ViewModel across fragments.
+    private val viewModel: AddDiscoveryViewModel by activityViewModels {
+        AddDiscoveryViewModelFactory(
+            (activity?.application as AddDiscoveryApplication).database.discoveredDao()
+        )
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.add_discovery_fragment, container, false)
-        view.btnCamera.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)}
-        return view
+        binding = AddDiscoveryFragmentBinding.inflate(inflater)
+
+        //toDo
+        /*binding.btnCamera.setOnClickListener{Navigation.findNavController()
+            .navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)}*/
+
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lateinit var binding : AddDiscoveryFragmentBinding
+
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddDiscoveryViewModel::class.java)
-        // TODO: Use the ViewModel
+    /**
+     * Inserts the new Item into database and navigates up to list fragment.
+     */
+    private fun addNewItem() {
+
+        viewModel.addNewDiscovery(
+            binding.
+
+        )
+        val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
+        findNavController().navigate(action)
     }
+
 
 }
 
