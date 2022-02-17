@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -48,24 +49,23 @@ class addDiscoveryFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Inserts the new Item into database and navigates up to list fragment.
+     */
+    private fun addNewDisco() {
+        viewModel.addNewDiscovery(
+            binding.textInputAnimalName.text.toString()
+        )
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        super.onViewCreated(view, savedInstanceState)
 
-    }
-
-    /**
-     * Inserts the new Item into database and navigates up to list fragment.
-     */
-    private fun addNewItem() {
-
-        viewModel.addNewDiscovery(
-            binding.
-
-        )
-        val action = AddItemFragmentDirections.actionAddItemFragmentToItemListFragment()
-        findNavController().navigate(action)
+            binding.saveAction.setOnClickListener {
+                addNewDisco()
+            }
     }
 
 

@@ -8,15 +8,17 @@
     android:orientation="vertical"
     android:padding="16dp">
   <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/tier_name"
+      android:id="@+id/add_animal_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:hint="Animal Name"
       app:errorEnabled="true">
 
       <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/text_input_animal_name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="Tier Name">
+          android:inputType="text">
 
       </com.google.android.material.textfield.TextInputEditText>
 
@@ -24,15 +26,16 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Beschreibung"
+        android:id="@+id/add_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Add Description"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Beschreibung">
+            android:layout_height="wrap_content">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -61,5 +64,11 @@
         android:contentDescription="@string/camera"
         android:src="@android:drawable/ic_menu_camera" />
 
+    <Button
+        android:id="@+id/save_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Save" />
 
 </LinearLayout>

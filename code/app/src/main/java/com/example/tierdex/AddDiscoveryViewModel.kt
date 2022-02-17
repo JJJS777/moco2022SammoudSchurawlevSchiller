@@ -1,6 +1,5 @@
 package com.example.tierdex
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.tierdex.data.dao.DiscoveredDao
 import com.example.tierdex.data.entities.Discovered
@@ -25,7 +24,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     //TODO später sollen die Daten aus dem Internet gefached werden und in Room abgespeichert
     private fun getNewDiscoEntry( discoName: String ) : Discovered {
         return Discovered(
-            discoName = discoName
+            animalName = discoName
         )
     }
 
@@ -45,7 +44,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     ): Discovered {
         return Discovered(
             discoID = discoID,
-            discoName = discoName
+            animalName = discoName
         )
     }
 
