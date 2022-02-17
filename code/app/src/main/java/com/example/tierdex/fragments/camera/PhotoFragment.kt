@@ -8,10 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.tierdex.MainActivity
+import com.example.tierdex.R
 import com.example.tierdex.databinding.FragmentPhotoBinding
 import com.example.tierdex.model.PhotoViewModel
+import kotlinx.android.synthetic.main.fragment_photo.view.*
+import kotlinx.android.synthetic.main.item_view.view.*
 import java.io.File
 
 class PhotoFragment : Fragment() {
@@ -23,6 +27,9 @@ class PhotoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val view = inflater.inflate(R.layout.fragment_photo, container, false)
+        view.back_button.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_cameraLayout)}
+        view.btnShare.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment)}
         _binding = FragmentPhotoBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -57,5 +57,12 @@
         android:id="@+id/photo_view_pager"
         android:name="com.example.tierdex.fragments.camera.PhotoFragment"
         android:label="add_discovery_fragment"
-        tools:layout="@layout/fragment_photo" />
+        tools:layout="@layout/fragment_photo" >
+        <action
+            android:id="@+id/action_photo_view_pager_to_cameraLayout"
+            app:destination="@id/cameraLayout" />
+        <action
+            android:id="@+id/action_photo_view_pager_to_addDiscoveryFragment"
+            app:destination="@id/addDiscoveryFragment" />
+    </fragment>
 </navigation>
