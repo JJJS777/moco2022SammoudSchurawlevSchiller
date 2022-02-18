@@ -66,8 +66,11 @@ class CameraFragment : Fragment() {
     private var imageAnalyzer : ImageAnalysis? = null
 
 
+
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
+
+    private lateinit var viewer : View
 
 
     override fun onResume() {
@@ -101,6 +104,7 @@ class CameraFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         outputDirectory = getOutputDirectory(requireContext())
+        viewer = view
         initGallerie()
 
         managePermissions = Permissions(requireActivity(), PERMISSIONS, PERMISSION_CODE)
@@ -271,18 +275,12 @@ class CameraFragment : Fragment() {
 
     private fun showPhoto(){
         cameraExecutor.shutdown()
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.cameraLayout,PhotoFragment())
-            .addToBackStack("camera")
-        transaction.commit()
+        Navigation.findNavController(viewer).navigate(R.id.action_cameraLayout_to_photo_view_pager)
     }
 
     private fun showGallerie(){
         cameraExecutor.shutdown()
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.cameraLayout,GallerieFragment())
-            .addToBackStack("camera")
-        transaction.commit()
+        Navigation.findNavController(viewer).navigate(R.id.action_cameraLayout_to_galleryImageView)
     }
 
 
