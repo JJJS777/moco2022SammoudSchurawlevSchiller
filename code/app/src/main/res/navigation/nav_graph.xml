@@ -31,6 +31,10 @@
         <action
             android:id="@+id/action_addDiscoveryFragment_to_cameraLayout"
             app:destination="@id/cameraLayout" />
+        <argument
+            android:name="photo"
+            app:argType="string"
+            android:defaultValue="None" />
     </fragment>
     <fragment
         android:id="@+id/cameraLayout"
@@ -63,6 +67,11 @@
             app:destination="@id/cameraLayout" />
         <action
             android:id="@+id/action_photo_view_pager_to_addDiscoveryFragment"
-            app:destination="@id/addDiscoveryFragment" />
+            app:destination="@id/addDiscoveryFragment" >
+            <argument
+                android:name="photo"
+                app:argType="string"
+                android:defaultValue="None" />
+    </action>
     </fragment>
 </navigation>

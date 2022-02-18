@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.tierdex.MainActivity
 import com.example.tierdex.R
+import com.example.tierdex.addDiscoveryFragment
 import com.example.tierdex.databinding.FragmentPhotoBinding
 import com.example.tierdex.model.PhotoViewModel
 import kotlinx.android.synthetic.main.fragment_photo.view.*
@@ -27,9 +28,7 @@ class PhotoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_photo, container, false)
-        view.back_button.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_cameraLayout)}
-        view.btnShare.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment)}
+
         _binding = FragmentPhotoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,13 +40,21 @@ class PhotoFragment : Fragment() {
         val uri = photoModel.selectedItem.value?.uri!!
         showPhoto(uri)
 
-        binding.backButton.setOnClickListener {
-            TODO()
-        }
+            binding.backButton.setOnClickListener{
+                Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_cameraLayout)
+            }
 
-        binding.shareButton.setOnClickListener {
-            TODO()
-        }
+            binding.shareButton.setOnClickListener{
+                //create bundle with photo data
+                val photo = uri.toString()
+                val bundle = Bundle()
+                bundle.putString("photo",photo)
+                //send to addDiscoveryFragment
+                val fragment = addDiscoveryFragment()
+                fragment.arguments = bundle
+                //navigate to addDiscoveryFragment
+                Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment)
+            }
     }
 
     private fun showPhoto(uri: Uri){

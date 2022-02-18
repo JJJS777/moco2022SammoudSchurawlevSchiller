@@ -1,5 +1,6 @@
 package com.example.tierdex
 
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavGraph
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
 import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 
@@ -35,6 +37,8 @@ class addDiscoveryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         lateinit var binding : AddDiscoveryFragmentBinding
 
+
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -42,6 +46,7 @@ class addDiscoveryFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(AddDiscoveryViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
 
 }
 
