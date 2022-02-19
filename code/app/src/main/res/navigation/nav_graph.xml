@@ -54,8 +54,8 @@
         android:label="add_discovery_fragment"
         tools:layout="@layout/fragment_gallerie" >
         <action
-            android:id="@+id/action_galleryImageView_to_photo_view_pager"
-            app:destination="@id/photo_view_pager" />
+            android:id="@+id/action_galleryImageView_to_addDiscoveryFragment"
+            app:destination="@id/addDiscoveryFragment" />
     </fragment>
     <fragment
         android:id="@+id/photo_view_pager"

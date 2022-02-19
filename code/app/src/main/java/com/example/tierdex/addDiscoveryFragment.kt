@@ -12,6 +12,7 @@ import androidx.navigation.NavGraph
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
+import com.example.tierdex.databinding.FragmentPhotoBinding
 import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 
 class addDiscoveryFragment : Fragment() {
@@ -20,24 +21,31 @@ class addDiscoveryFragment : Fragment() {
         fun newInstance() = addDiscoveryFragment()
     }
 
+    private var _binding : AddDiscoveryFragmentBinding? = null
+    private val binding get () = _binding!!
+
     private lateinit var viewModel: AddDiscoveryViewModel
+
+    private var uri : String? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.add_discovery_fragment, container, false)
-        view.btnCamera.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)}
-        return view
+    ): View {
+        _binding = AddDiscoveryFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lateinit var binding : AddDiscoveryFragmentBinding
 
+        uri = arguments!!.getString("photo")
 
+        binding.btnCamera.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)
+        }
 
     }
 
