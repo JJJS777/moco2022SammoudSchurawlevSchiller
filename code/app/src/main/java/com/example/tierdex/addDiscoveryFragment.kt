@@ -27,7 +27,7 @@ class addDiscoveryFragment : Fragment() {
     // to share the ViewModel across fragments.
     private val viewModel: AddDiscoveryViewModel by activityViewModels {
         AddDiscoveryViewModelFactory(
-            (activity?.application as AddDiscoveryApplication).database.discoveredDao()
+            (activity?.application as TierDexApplication).database.discoveredDao()
         )
     }
 
