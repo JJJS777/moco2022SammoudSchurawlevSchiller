@@ -62,7 +62,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
 class AddDiscoveryViewModelFactory( private val discoveredDao: DiscoveredDao )
     : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AddDiscoveryViewModelFactory::class.java)) {
+        if (modelClass.isAssignableFrom(AddDiscoveryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return AddDiscoveryViewModel(discoveredDao) as T
         }
