@@ -15,38 +15,17 @@
         android:layout_height="match_parent"
         android:id="@+id/photo_view_pager" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageButton
-            android:id="@+id/back_button"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="@dimen/margin_xsmall"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_width="@dimen/round_button_small"
-            android:layout_height="@dimen/round_button_small"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_arrow_back" />
-
-        <ImageButton
-            android:id="@+id/share_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginEnd="@dimen/margin_xlarge"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:layout_width="@dimen/round_button_small"
-            android:layout_height="@dimen/round_button_small"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_baseline_share_24" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/share_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_width="@dimen/round_button_small"
+        android:layout_height="@dimen/round_button_small"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/bg_button_round" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
