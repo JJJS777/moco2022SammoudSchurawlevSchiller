@@ -127,11 +127,7 @@ private fun hasLocationPermission()=
             Toast.LENGTH_SHORT
         ).show()
     }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddDiscoveryViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 }
 
 
