@@ -26,7 +26,9 @@ import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 import java.util.jar.Manifest
 import android.R
+import android.location.Geocoder
 import android.widget.EditText
+import com.example.tierdex.databinding.FragmentPhotoBinding
 
 class addDiscoveryFragment : Fragment() {
 
@@ -38,31 +40,52 @@ class addDiscoveryFragment : Fragment() {
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
+
+    private var _binding : AddDiscoveryFragmentBinding? = null
+    private val binding get () = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(com.example.tierdex.R.layout.add_discovery_fragment, container, false)
-        view.btnCamera.setOnClickListener{Navigation.findNavController(view).navigate(com.example.tierdex.R.id.action_addDiscoveryFragment_to_cameraLayout)}
-        return view
+    ): View {
+        _binding = AddDiscoveryFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        lateinit var binding : AddDiscoveryFragmentBinding
+    super.onViewCreated(view, savedInstanceState)
+    binding.btnCamera.setOnClickListener {
+        Navigation.findNavController(view)
+            .navigate(com.example.tierdex.R.id.action_addDiscoveryFragment_to_cameraLayout)
+    }
+    val latlan = binding.textlatlan
     fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        if(hasLocationPermission()) {
+    while (true) {
+        if (hasLocationPermission()) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                Log.d("addDiscovery", location.latitude.toString())
-                Log.d("addDiscovery", location.longitude.toString())
-                val valuelatlan =  location.latitude.toString() +", "+ location.longitude.toString()
-                binding.textlatlan.setText(valuelatlan)
+                val geocoder = Geocoder(requireContext())
+                val currentLocation = geocoder.getFromLocation(
+                    location.latitude,
+                    location.longitude,
+                    1
+                )
+               val lat =  location.latitude.toString()
+                val lon = location.longitude.toString()
+                val countryCode = currentLocation[0].countryCode
+                val city = currentLocation[0].locality
+
+
+                val valuelatlan = "lat, lan: $lat, $lon, \nCity: $city, $countryCode"
+                latlan.text = valuelatlan
+
             }
-        }else{
+            break;
+        } else {
             requestLocationPermission()
         }
     }
+}
 
     //returns true if permission granted
 private fun hasLocationPermission()=
