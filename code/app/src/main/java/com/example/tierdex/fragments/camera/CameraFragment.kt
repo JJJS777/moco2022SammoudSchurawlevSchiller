@@ -35,10 +35,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
-import com.example.tierdex.model.Photo
 import com.example.tierdex.model.PhotoViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.camera_fragment.view.*
+import kotlinx.coroutines.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -64,8 +63,11 @@ class CameraFragment : Fragment() {
     private var imageAnalyzer : ImageAnalysis? = null
 
 
+
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
+
+    private var photoUri : Uri? = null
 
 
     override fun onResume() {
@@ -88,7 +90,9 @@ class CameraFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        val view = inflater.inflate(R.layout.camera_fragment, container, false)
+        view.btnTakePicture.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_photo_view_pager)}
+        view.btnGallery.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_galleryImageView)}
         _binding = CameraFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -106,10 +110,24 @@ class CameraFragment : Fragment() {
         startCamera()
 
         binding.run {
-            btnTakePicture.setOnClickListener { takephoto() }
+            btnTakePicture.setOnClickListener {
+                GlobalScope.launch {
+                    suspend {
+                        takephoto()
+                        delay(500)
+                        withContext(Dispatchers.Main){
+                            if (photoUri != null){
+                                showPhoto(photoUri!!)
+                            }
+                        }
+                    }.invoke()
+                }
+            }
             btnGallery.setOnClickListener { showGallerie() }
         }
+
     }
+
 
     /** Declare and bind preview, capture and analysis use cases */
     private fun bindCameraUseCases() {
@@ -206,8 +224,7 @@ class CameraFragment : Fragment() {
                     override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                         val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
 
-                        photoModel.addItem(Photo(savedUri))
-
+                        photoUri = savedUri
 
                         // If the folder selected is an external media directory, this is
                         // unnecessary but otherwise other apps will not be able to access our
@@ -221,20 +238,20 @@ class CameraFragment : Fragment() {
                         ) { _, uri ->
                             Log.d(TAG, "Image capture scanned into media store: $uri")
                         }
-                        showPhoto()
-                    }
-                }
-            )
-        }
-        // We can only change the foreground Drawable using API level 23+ API
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            // Display flash animation to indicate that photo was captured
-            binding.root.postDelayed({
-                binding.root.foreground = ColorDrawable(Color.WHITE)
-                binding.root.postDelayed(
-                    { binding.root.foreground = null }, 50L)
-            }, 100L)
+                    }
+                })
+
+            // We can only change the foreground Drawable using API level 23+ API
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // Display flash animation to indicate that photo was captured
+                binding.root.postDelayed({
+                    binding.root.foreground = ColorDrawable(Color.WHITE)
+                    binding.root.postDelayed(
+                        { binding.root.foreground = null }, 50L)
+                }, 100L)
+            }
+
         }
     }
 
@@ -265,20 +282,21 @@ class CameraFragment : Fragment() {
         }
     }
 
-    private fun showPhoto(){
+    private fun showPhoto(uri : Uri){
         cameraExecutor.shutdown()
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.cameraLayout,PhotoFragment())
-            .addToBackStack("camera")
-        transaction.commit()
+
+        val photo = uri.toString()
+        val bundle = Bundle()
+        bundle.putString("photo",photo)
+        val fragment = PhotoFragment()
+        fragment.arguments = bundle
+
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_cameraLayout_to_photo_view_pager,bundle) }
     }
 
     private fun showGallerie(){
         cameraExecutor.shutdown()
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.cameraLayout,GallerieFragment())
-            .addToBackStack("camera")
-        transaction.commit()
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_cameraLayout_to_galleryImageView) }
     }
 
 

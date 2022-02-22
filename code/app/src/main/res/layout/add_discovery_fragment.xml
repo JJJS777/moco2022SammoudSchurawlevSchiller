@@ -4,55 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addDiscoveryFragment"
+    tools:context=".fragments.AddDiscoveryFragment"
     android:orientation="vertical"
     android:padding="16dp">
   <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/tier_name"
+      android:id="@+id/add_animal_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:hint="Animal Name"
       app:errorEnabled="true">
 
       <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/text_input_animal_name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:hint="Tier Name">
-
+          android:inputType="text">
       </com.google.android.material.textfield.TextInputEditText>
-
   </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Beschreibung"
+        android:id="@+id/add_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Add Description"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Beschreibung">
-
+            android:layout_height="wrap_content">
         </com.google.android.material.textfield.TextInputEditText>
-
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/LatLan"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/textlatlan"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Lat, Lan">
-
-        </com.google.android.material.textfield.TextInputEditText>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="location"
+        android:text="TextView" />
 
     <ImageButton
+        android:id="@+id/btnCamera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
@@ -60,5 +55,11 @@
         android:contentDescription="@string/camera"
         android:src="@android:drawable/ic_menu_camera" />
 
+    <Button
+        android:id="@+id/save_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Save" />
 
 </LinearLayout>
