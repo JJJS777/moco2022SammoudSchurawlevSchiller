@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/addDiscoveryFragment"
-        android:name="com.example.tierdex.addDiscoveryFragment"
+        android:name="com.example.tierdex.fragments.AddDiscoveryFragment"
         android:label="add_discovery_fragment"
         tools:layout="@layout/add_discovery_fragment" >
         <action

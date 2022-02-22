@@ -31,21 +31,15 @@ import androidx.core.net.toFile
 import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.loader.content.AsyncTaskLoader
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.tierdex.addDiscoveryFragment
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
-import com.example.tierdex.model.Photo
 import com.example.tierdex.model.PhotoViewModel
-import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 import kotlinx.android.synthetic.main.camera_fragment.view.*
 import kotlinx.coroutines.*
-import java.net.URI
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 /** Helper type alias used for analysis use case callbacks */
 typealias LumaListener = (luma: Double) -> Unit

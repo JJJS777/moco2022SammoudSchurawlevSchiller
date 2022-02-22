@@ -1,30 +1,24 @@
-package com.example.tierdex
+package com.example.tierdex.fragments
 
-import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import com.example.tierdex.data.entities.Discovered
-import com.bumptech.glide.Glide
+import com.example.tierdex.AddDiscoveryViewModel
+import com.example.tierdex.AddDiscoveryViewModelFactory
+import com.example.tierdex.R
+import com.example.tierdex.TierDexApplication
 import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
-import com.example.tierdex.databinding.FragmentPhotoBinding
-import kotlinx.android.synthetic.main.add_discovery_fragment.view.*
 
-class addDiscoveryFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = addDiscoveryFragment()
-    }
+class AddDiscoveryFragment : Fragment() {
 
-    lateinit var disco: Discovered
     lateinit var binding : AddDiscoveryFragmentBinding
+    private var uri : String? = null
+
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     // to share the ViewModel across fragments.
@@ -34,23 +28,11 @@ class addDiscoveryFragment : Fragment() {
         )
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-    private var uri : String? = null
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = AddDiscoveryFragmentBinding.inflate(inflater)
-
-        //toDo
-        /*binding.btnCamera.setOnClickListener{Navigation.findNavController()
-            .navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)}*/
-
         return binding.root
     }
 
@@ -76,13 +58,6 @@ class addDiscoveryFragment : Fragment() {
                 addNewDisco()
             }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(AddDiscoveryViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }
 
 

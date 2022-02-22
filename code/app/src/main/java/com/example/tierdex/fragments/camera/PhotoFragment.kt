@@ -10,7 +10,7 @@ import androidx.core.net.toUri
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.tierdex.R
-import com.example.tierdex.addDiscoveryFragment
+import com.example.tierdex.fragments.AddDiscoveryFragment
 import com.example.tierdex.databinding.FragmentPhotoBinding
 
 
@@ -42,7 +42,7 @@ class PhotoFragment : Fragment() {
             val bundle = Bundle()
             bundle.putString("photo",photo)
             //send to addDiscoveryFragment
-            val fragment = addDiscoveryFragment()
+            val fragment = AddDiscoveryFragment()
             fragment.arguments = bundle
             //navigate to addDiscoveryFragment
             Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment)
