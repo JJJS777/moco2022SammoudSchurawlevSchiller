@@ -14,6 +14,7 @@ import com.example.tierdex.AddDiscoveryViewModel
 import com.example.tierdex.AddDiscoveryViewModelFactory
 import com.example.tierdex.R
 import com.example.tierdex.TierDexApplication
+import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -30,6 +31,8 @@ class AddDiscoveryFragment : Fragment() {
     lateinit var binding: AddDiscoveryFragmentBinding
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var lat =""
+    private var lon =""
 
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
@@ -53,7 +56,8 @@ class AddDiscoveryFragment : Fragment() {
      */
     private fun addNewDisco() {
         viewModel.addNewDiscovery(
-            binding.textInputAnimalName.text.toString()
+            binding.textInputAnimalName.text.toString(),
+            coordinates = Coordinates( lat, lon )
         )
     }
 
@@ -68,8 +72,6 @@ class AddDiscoveryFragment : Fragment() {
         while (true) {
             if (hasLocationPermission()) {
                 fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                    var lat =""
-                    var lon =""
                     if (location == null || location.accuracy > 100){
                         lat =  "51.0241451"
                         lon = "7.5629562"

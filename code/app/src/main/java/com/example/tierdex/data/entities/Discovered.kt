@@ -1,7 +1,11 @@
 package com.example.tierdex.data.entities
 
-import androidx.room.*
-import java.sql.Date
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+class Coordinates(var latitude: String, var longitude: String) { }
 
 @Entity
 data class Discovered (
@@ -9,6 +13,8 @@ data class Discovered (
     val discoID: Int = 0,
     @ColumnInfo(name = "name")
     val animalName: String,
+    @Embedded
+    val coordinates: Coordinates
 )
 
 

@@ -2,6 +2,7 @@ package com.example.tierdex
 
 import androidx.lifecycle.*
 import com.example.tierdex.data.dao.DiscoveredDao
+import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.data.entities.Discovered
 import kotlinx.coroutines.launch
 
@@ -10,8 +11,8 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
 
     val allDiscoveries: LiveData<List<Discovered>> = discoveredDao.getDiscoveries().asLiveData()
 
-    fun addNewDiscovery( discoName: String ){
-        val newDiscovery = getNewDiscoEntry( discoName )
+    fun addNewDiscovery( discoName: String, coordinates: Coordinates ){
+        val newDiscovery = getNewDiscoEntry( discoName, coordinates )
         insertDiscovery( newDiscovery )
     }
 
@@ -22,9 +23,10 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     }
 
     //TODO später sollen die Daten aus dem Internet gefached werden und in Room abgespeichert
-    private fun getNewDiscoEntry( discoName: String ) : Discovered {
+    private fun getNewDiscoEntry( discoName: String, coordinates: Coordinates ) : Discovered {
         return Discovered(
-            animalName = discoName
+            animalName = discoName,
+            coordinates = coordinates
         )
     }
 
@@ -40,19 +42,22 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
 
     private fun  getUpdatedDiscoEntry(
         discoID: Int,
-        discoName: String
+        discoName: String,
+        coordinates: Coordinates
     ): Discovered {
         return Discovered(
             discoID = discoID,
-            animalName = discoName
+            animalName = discoName,
+            coordinates = coordinates
         )
     }
 
     fun updateDisco(
         discoID: Int,
-        discoName: String
+        discoName: String,
+        coordinates: Coordinates
     ){
-        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName)
+        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, coordinates)
         updateDisco(updatedDisco)
     }
 
