@@ -64,19 +64,24 @@ class addDiscoveryFragment : Fragment() {
     while (true) {
         if (hasLocationPermission()) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                val geocoder = Geocoder(requireContext())
-                val currentLocation = geocoder.getFromLocation(
-                    location.latitude,
-                    location.longitude,
-                    1
-                )
-               val lat =  location.latitude.toString()
-                val lon = location.longitude.toString()
-                val countryCode = currentLocation[0].countryCode
-                val city = currentLocation[0].locality
-
-
-                val valuelatlan = "lat, lan: $lat, $lon, \nCity: $city, $countryCode"
+                var lat =""
+                var lon =""
+                if (location == null || location.accuracy > 100){
+                     lat =  "51.0241451"
+                     lon = "7.5629562"
+                }else {
+                    val geocoder = Geocoder(requireContext())
+                    val currentLocation = geocoder.getFromLocation(
+                        location.latitude,
+                        location.longitude,
+                        1
+                    )
+                     lat = location.latitude.toString()
+                     lon = location.longitude.toString()
+                    val countryCode = currentLocation[0].countryCode
+                    val city = currentLocation[0].locality
+                }
+                val valuelatlan = "lat, lan: $lat, $lon"
                 latlan.text = valuelatlan
 
             }
