@@ -1,9 +1,19 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7ad55ef88f22dcd6a53e518f42d15031/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7ad55ef88f22dcd6a53e518f42d15031/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7ad55ef88f22dcd6a53e518f42d15031/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/AndroidManifest.xml" />
+=======
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8447ae2d7132b7bd911d12fe328e5c0c/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0110a1c0c26b4fce8a05217fa5556f89/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2d188609bb5dbb9e6277600c972626c1/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5da1aec68defa4d37836102fc5d55ec0/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b432e3c10a22e830a4879c719bbf53dc/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b432e3c10a22e830a4879c719bbf53dc/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b432e3c10a22e830a4879c719bbf53dc/transformed/jetified-firebase-appcheck-safetynet-16.0.0-beta04/AndroidManifest.xml" />
+>>>>>>> main
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-safetynet/16.0.0-beta04/e02136d5da97ca5f11bdfb145706274f1946e3ae/firebase-appcheck-safetynet-16.0.0-beta04-javadoc.jar!/" />
