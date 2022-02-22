@@ -70,7 +70,6 @@ class AddDiscoveryFragment : Fragment() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
         binding.btnLocation.setOnClickListener{
-            while (true) {
                 if (hasLocationPermission()) {
                     fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
                         if (location == null || location.accuracy > 100){
@@ -90,16 +89,11 @@ class AddDiscoveryFragment : Fragment() {
                         }
                         val valuelatlan = "lat, lan: $lat, $lon"
                         latlan.text = valuelatlan
-
                     }
-                    break;
                 } else {
-                    if (!askedForLocationPermission)
                     requestLocationPermission()
-                    else
-                        break;
                 }
-            }
+
 
         }
 
