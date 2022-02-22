@@ -33,6 +33,7 @@ class AddDiscoveryFragment : Fragment() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var lat =""
     private var lon =""
+    private var askedForLocationPermission = false
 
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
@@ -62,40 +63,46 @@ class AddDiscoveryFragment : Fragment() {
     }
 
     @SuppressLint("MissingPermission")
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val latlan = binding.textlatlan
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        while (true) {
-            if (hasLocationPermission()) {
-                fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                    if (location == null || location.accuracy > 100){
-                        lat =  "51.0241451"
-                        lon = "7.5629562"
-                    }else {
-                        val geocoder = Geocoder(requireContext())
-                        val currentLocation = geocoder.getFromLocation(
-                            location.latitude,
-                            location.longitude,
-                            1
-                        )
-                        lat = location.latitude.toString()
-                        lon = location.longitude.toString()
-                        val countryCode = currentLocation[0].countryCode
-                        val city = currentLocation[0].locality
-                    }
-                    val valuelatlan = "lat, lan: $lat, $lon"
-                    latlan.text = valuelatlan
+        binding.btnLocation.setOnClickListener{
+            while (true) {
+                if (hasLocationPermission()) {
+                    fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
+                        if (location == null || location.accuracy > 100){
+                            lat =  "51.0241451"
+                            lon = "7.5629562"
+                        }else {
+                            val geocoder = Geocoder(requireContext())
+                            val currentLocation = geocoder.getFromLocation(
+                                location.latitude,
+                                location.longitude,
+                                1
+                            )
+                            lat = location.latitude.toString()
+                            lon = location.longitude.toString()
+                            val countryCode = currentLocation[0].countryCode
+                            val city = currentLocation[0].locality
+                        }
+                        val valuelatlan = "lat, lan: $lat, $lon"
+                        latlan.text = valuelatlan
 
+                    }
+                    break;
+                } else {
+                    if (!askedForLocationPermission)
+                    requestLocationPermission()
+                    else
+                        break;
                 }
-                break;
-            } else {
-                requestLocationPermission()
             }
+
         }
+
 
         uri = requireArguments().getString("photo")
         binding.btnCamera.setOnClickListener {
@@ -123,6 +130,7 @@ class AddDiscoveryFragment : Fragment() {
             PERMISSION_LOCATION_REQUEST_CODE,
             android.Manifest.permission.ACCESS_FINE_LOCATION
         )
+        askedForLocationPermission = true
     }
 
     override fun onRequestPermissionsResult(
