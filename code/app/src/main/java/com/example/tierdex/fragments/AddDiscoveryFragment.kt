@@ -2,12 +2,14 @@ package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
 import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.tierdex.AddDiscoveryViewModel
@@ -19,8 +21,9 @@ import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.vmadalin.easypermissions.EasyPermissions
-import com.vmadalin.easypermissions.dialogs.SettingsDialog
-
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 
 class AddDiscoveryFragment : Fragment() {
 
@@ -31,8 +34,12 @@ class AddDiscoveryFragment : Fragment() {
     lateinit var binding: FragmentAddDiscoveryBinding
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var lat =""
-    private var lon =""
+    private lateinit var locationCallback: LocationCallback
+    private lateinit var locationRequest: LocationRequest
+    private var currentLocation: Location? = null
+
+    private var lat ="37.4220"
+    private var lon ="-122.0840"
     private var askedForLocationPermission = false
 
 
@@ -49,6 +56,19 @@ class AddDiscoveryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddDiscoveryBinding.inflate(inflater)
+        if(!hasLocationPermission() && askedForLocationPermission){
+            binding.addLatlon.visibility = View.VISIBLE
+            binding.textInputLatlon.visibility = View.VISIBLE
+        }
+        binding.textInputLatlon.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.textlatlan.setText("lat, lon: $s")
+            }
+        })
         return binding.root
     }
 
@@ -65,16 +85,32 @@ class AddDiscoveryFragment : Fragment() {
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val latlan = binding.textlatlan
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
         binding.btnLocation.setOnClickListener{
                 if (hasLocationPermission()) {
+                    binding.addLatlon.visibility = View.INVISIBLE
+                    binding.textInputLatlon.visibility = View.INVISIBLE
                     fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                        if (location == null || location.accuracy > 100){
-                            lat =  "51.0241451"
-                            lon = "7.5629562"
+                        if (location == null ){
+                            locationRequest = LocationRequest()
+                            locationRequest.interval = 50000
+                            locationRequest.fastestInterval = 50000
+                            locationRequest.smallestDisplacement = 170f // 170 m = 0.1 mile
+                            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
+                            locationCallback = object : LocationCallback() {
+                                override fun onLocationResult(locationResult: LocationResult) {
+                                    locationResult?: return
+                                    if (locationResult.locations.isNotEmpty()) {
+                                        // get latest location
+                                        val location = locationResult.lastLocation
+                                        lat = location.latitude.toString()
+                                        lon = location.longitude.toString()
+                                        val valuelatlan = "lat, lon: $lat, $lon"
+                                        latlan.text = valuelatlan
+                                    }
+                                }
+                            }
                         }else {
                             val geocoder = Geocoder(requireContext())
                             val currentLocation = geocoder.getFromLocation(
@@ -87,16 +123,17 @@ class AddDiscoveryFragment : Fragment() {
                             val countryCode = currentLocation[0].countryCode
                             val city = currentLocation[0].locality
                         }
-                        val valuelatlan = "lat, lan: $lat, $lon"
+                        val valuelatlan = "lat, lon: $lat, $lon"
                         latlan.text = valuelatlan
                     }
-                } else {
+                } else if (askedForLocationPermission){
+                    binding.addLatlon.visibility = View.VISIBLE
+                    binding.textInputLatlon.visibility = View.VISIBLE
+                }
+                else {
                     requestLocationPermission()
                 }
-
-
         }
-
 
         uri = requireArguments().getString("photo")
         binding.btnCamera.setOnClickListener {
@@ -107,6 +144,7 @@ class AddDiscoveryFragment : Fragment() {
         binding.saveAction.setOnClickListener {
             addNewDisco()
         }
+
     }
 
     //returns true if permission granted
@@ -136,20 +174,8 @@ class AddDiscoveryFragment : Fragment() {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    fun onPermissionsDenied(requestCode: Int,perms : List<String>){
-        if (EasyPermissions.permissionPermanentlyDenied(this, perms.first())){
-            SettingsDialog.Builder(requireActivity()).build().show()
-        }else{
-            requestLocationPermission()
-        }
-    }
-    fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
-        Toast.makeText(
-            requireContext(),
-            "Permission Granted!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
+
+
 
 }
 
