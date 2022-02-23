@@ -33,4 +33,6 @@
     <string name="grid_animal_name">Name</string>
     <string name="binomial_name">Binomial Name</string>
     <string name="txt_save_button">Save</string>
+    <string name="location_of_discovery">Location of Discovery</string>
+    <string name="no_location_given">No location given</string>
 </resources>
