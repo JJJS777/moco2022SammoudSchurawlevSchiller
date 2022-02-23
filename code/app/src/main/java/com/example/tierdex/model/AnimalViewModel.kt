@@ -29,9 +29,6 @@ class AnimalViewModel : ViewModel() {
         onSearch( "shark" )
     }
 
-
-
-
     fun onSearch( animalQueryPara: String ) {
         val apiInterface = AnimalApi.retrofitService
             .getData(animalQueryPara, "imageAvailable:true")
