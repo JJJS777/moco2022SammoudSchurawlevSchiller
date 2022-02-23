@@ -15,7 +15,7 @@ import com.example.tierdex.AddDiscoveryViewModelFactory
 import com.example.tierdex.R
 import com.example.tierdex.TierDexApplication
 import com.example.tierdex.data.entities.Coordinates
-import com.example.tierdex.databinding.AddDiscoveryFragmentBinding
+import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.vmadalin.easypermissions.EasyPermissions
@@ -28,7 +28,7 @@ class AddDiscoveryFragment : Fragment() {
         const val PERMISSION_LOCATION_REQUEST_CODE = 1
     }
 
-    lateinit var binding: AddDiscoveryFragmentBinding
+    lateinit var binding: FragmentAddDiscoveryBinding
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var lat =""
@@ -48,7 +48,7 @@ class AddDiscoveryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = AddDiscoveryFragmentBinding.inflate(inflater)
+        binding = FragmentAddDiscoveryBinding.inflate(inflater)
         return binding.root
     }
 

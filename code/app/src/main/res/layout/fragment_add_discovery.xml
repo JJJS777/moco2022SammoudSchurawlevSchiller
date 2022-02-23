@@ -77,11 +77,11 @@
         android:contentDescription="@string/camera"
         android:src="@android:drawable/ic_menu_camera" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/save_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/medium"
         android:text="@string/txt_save_button" />
 
 </LinearLayout>

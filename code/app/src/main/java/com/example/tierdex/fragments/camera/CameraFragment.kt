@@ -20,7 +20,6 @@ import androidx.camera.core.ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.tierdex.R
-import com.example.tierdex.databinding.CameraFragmentBinding
 import java.io.File
 import java.lang.Math.*
 import java.text.SimpleDateFormat
@@ -28,14 +27,16 @@ import java.util.*
 import androidx.camera.core.ImageCapture.Metadata
 import androidx.camera.view.PreviewView
 import androidx.core.net.toFile
+import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.tierdex.databinding.FragmentCameraBinding
 import com.example.tierdex.model.LuminosityAnalyzer
 import com.example.tierdex.model.Permissions
 import com.example.tierdex.model.PhotoViewModel
-import kotlinx.android.synthetic.main.camera_fragment.view.*
+import kotlinx.android.synthetic.main.fragment_camera.view.*
 import kotlinx.coroutines.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -45,7 +46,7 @@ typealias LumaListener = (luma: Double) -> Unit
 
 class CameraFragment : Fragment() {
     private val photoModel: PhotoViewModel by viewModels()
-    private var _binding: CameraFragmentBinding? = null
+    private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
 
     // permission
@@ -92,7 +93,7 @@ class CameraFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_camera, container, false)
         view.btnTakePicture.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_photo_view_pager)}
         view.btnGallery.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_galleryImageView)}
-        _binding = CameraFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentCameraBinding.inflate(inflater, container, false)
         return binding.root
     }
 
