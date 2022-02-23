@@ -167,6 +167,12 @@
                 android:contentDescription="@string/camera"
                 android:src="@android:drawable/ic_menu_camera" />
 
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:id="@+id/photoView"
+                android:layout_marginTop="10dp"/>
+
             <Button
                 android:id="@+id/save_action"
                 android:layout_width="match_parent"
