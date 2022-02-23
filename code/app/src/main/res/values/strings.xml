@@ -35,4 +35,6 @@
     <string name="txt_save_button">Save</string>
     <string name="location_of_discovery">Location of Discovery</string>
     <string name="no_location_given">No location given</string>
+    <string name="add_picture_header">Add Picture</string>
+    <string name="add_animal_properties_Header">Add Animal Properties</string>
 </resources>

@@ -57,18 +57,8 @@ class AddDiscoveryFragment : Fragment() {
     ): View? {
         binding = FragmentAddDiscoveryBinding.inflate(inflater)
         if(!hasLocationPermission() && askedForLocationPermission){
-            binding.addLatlon.visibility = View.VISIBLE
-            binding.textInputLatlon.visibility = View.VISIBLE
+            binding.manualLocationInput.visibility = View.VISIBLE
         }
-        binding.textInputLatlon.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.textlatlan.setText("lat, lon: $s")
-            }
-        })
         return binding.root
     }
 
@@ -89,8 +79,7 @@ class AddDiscoveryFragment : Fragment() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
         binding.btnLocation.setOnClickListener{
                 if (hasLocationPermission()) {
-                    binding.addLatlon.visibility = View.INVISIBLE
-                    binding.textInputLatlon.visibility = View.INVISIBLE
+                    binding.manualLocationInput.visibility = View.VISIBLE
                     fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
                         if (location == null ){
                             locationRequest = LocationRequest()
@@ -127,8 +116,7 @@ class AddDiscoveryFragment : Fragment() {
                         latlan.text = valuelatlan
                     }
                 } else if (askedForLocationPermission){
-                    binding.addLatlon.visibility = View.VISIBLE
-                    binding.textInputLatlon.visibility = View.VISIBLE
+                    binding.manualLocationInput.visibility = View.VISIBLE
                 }
                 else {
                     requestLocationPermission()
@@ -173,10 +161,6 @@ class AddDiscoveryFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-
-
-
-
 }
 
 

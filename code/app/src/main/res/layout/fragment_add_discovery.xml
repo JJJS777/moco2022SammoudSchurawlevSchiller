@@ -4,140 +4,175 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context=".fragments.AddDiscoveryFragment">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/medium">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_animal_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Animal Name"
-            app:errorEnabled="true">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            tools:context=".fragments.AddDiscoveryFragment">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_input_animal_name"
+            <TextView
+                android:id="@+id/header_animal_properties"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/xxsmall"
+                android:text="@string/add_animal_properties_Header" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_animal_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Animal Name"
+                app:errorEnabled="true">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Add Description"
-            app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_animal_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_input_description"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:hint="Add Description"
+                app:errorEnabled="true">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Hier Locationen-->
             <LinearLayout
                 android:id="@+id/container_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
 
             <TextView
                 android:id="@+id/header_location_container"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/location_of_discovery"
-                style="@style/TextAppearance.MaterialComponents.Headline6"/>
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/xxsmall"
+                android:text="@string/location_of_discovery" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Country"
-            app:errorEnabled="true">
+            <!--Hier Möglichkeit zur Location Eingabe, wenn Permission verweigert-->
+            <LinearLayout
+                android:id="@+id/manual_location_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_country"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Country"
+                app:errorEnabled="true">
 
-        <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/add_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="City"
                 app:errorEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_city"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_postcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Postcode"
+                app:errorEnabled="true">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_postcode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Postcode"
-            app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_postcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_postcode"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/gps_location_input"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textlatlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/xsmall"
+                    android:hint="location"
+                    android:text="@string/no_location_given"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/btnLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:gravity="right"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    app:tint="#000000" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textlatlan"
+                android:id="@+id/header_camera"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/xsmall"
-                android:hint="location"
-                android:text="@string/no_location_given"
-                android:textSize="18sp" />
+                android:layout_marginTop="@dimen/small"
+                android:layout_marginBottom="@dimen/xxsmall"
+                android:text="@string/add_picture_header" />
 
             <ImageButton
-                android:id="@+id/btnLocation"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnCamera"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00FFFFFF"
-                android:backgroundTint="#000000"
-                android:gravity="right"
-                android:src="@android:drawable/ic_menu_mylocation"
-                app:tint="#000000" />
+                android:layout_gravity="center_horizontal|bottom"
+                android:contentDescription="@string/camera"
+                android:src="@android:drawable/ic_menu_camera" />
+
+            <Button
+                android:id="@+id/save_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium"
+                android:text="@string/txt_save_button" />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/btnCamera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:contentDescription="@string/camera"
-            android:src="@android:drawable/ic_menu_camera"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <Button
-            android:id="@+id/save_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium"
-            android:text="@string/txt_save_button" />
-
-    </LinearLayout>
+    </ScrollView>
 </layout>
