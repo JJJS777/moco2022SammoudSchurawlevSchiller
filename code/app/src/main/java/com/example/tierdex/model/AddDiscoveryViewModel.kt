@@ -11,8 +11,11 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
 
     val allDiscoveries: LiveData<List<Discovered>> = discoveredDao.getDiscoveries().asLiveData()
 
-    fun addNewDiscovery( discoName: String, coordinates: Coordinates ){
-        val newDiscovery = getNewDiscoEntry( discoName, coordinates )
+    fun addNewDiscovery( discoName: String,
+                         coordinates: Coordinates,
+                         camPicture: String )
+    {
+        val newDiscovery = getNewDiscoEntry( discoName, coordinates, camPicture )
         insertDiscovery( newDiscovery )
     }
 
@@ -23,10 +26,14 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     }
 
     //TODO später sollen die Daten aus dem Internet gefached werden und in Room abgespeichert
-    private fun getNewDiscoEntry( discoName: String, coordinates: Coordinates ) : Discovered {
+    private fun getNewDiscoEntry( discoName: String,
+                                  coordinates: Coordinates,
+                                  camPicture: String ) : Discovered
+    {
         return Discovered(
             animalName = discoName,
-            coordinates = coordinates
+            coordinates = coordinates,
+            camPicture = camPicture
         )
     }
 
@@ -43,21 +50,25 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     private fun  getUpdatedDiscoEntry(
         discoID: Int,
         discoName: String,
-        coordinates: Coordinates
+        coordinates: Coordinates,
+        camPicture: String
     ): Discovered {
         return Discovered(
             discoID = discoID,
             animalName = discoName,
-            coordinates = coordinates
+            coordinates = coordinates,
+            camPicture = camPicture
+
         )
     }
 
     fun updateDisco(
         discoID: Int,
         discoName: String,
-        coordinates: Coordinates
+        coordinates: Coordinates,
+        camPicture: String
     ){
-        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, coordinates)
+        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, coordinates, camPicture)
         updateDisco(updatedDisco)
     }
 

@@ -14,7 +14,9 @@ data class Discovered (
     @ColumnInfo(name = "name")
     val animalName: String,
     @Embedded
-    val coordinates: Coordinates
+    val coordinates: Coordinates,
+    @ColumnInfo(name = "picture")
+    val camPicture: String
 )
 
 
