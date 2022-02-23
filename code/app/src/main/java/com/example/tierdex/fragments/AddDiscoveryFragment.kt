@@ -1,8 +1,11 @@
 package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
+import android.telecom.TelecomManager.EXTRA_LOCATION
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.Fragment
@@ -28,6 +31,8 @@ import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
 import android.util.Log
 import androidx.core.widget.addTextChangedListener
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import java.util.concurrent.TimeUnit
 
 
 class AddDiscoveryFragment : Fragment() {
@@ -39,9 +44,9 @@ class AddDiscoveryFragment : Fragment() {
     lateinit var binding: AddDiscoveryFragmentBinding
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var locationRequest: LocationRequest? = null
-
-    private var locationCallback: LocationCallback? = null
+    private lateinit var locationCallback: LocationCallback
+    private lateinit var locationRequest: LocationRequest
+    private var currentLocation: Location? = null
 
     private var lat ="37.4220"
     private var lon ="-122.0840"
@@ -61,7 +66,7 @@ class AddDiscoveryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = AddDiscoveryFragmentBinding.inflate(inflater)
-        if(!hasLocationPermission()){
+        if(!hasLocationPermission() && askedForLocationPermission){
             binding.addLatlon.visibility = View.VISIBLE
             binding.textInputLatlon.visibility = View.VISIBLE
         }
@@ -91,10 +96,11 @@ class AddDiscoveryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val latlan = binding.textlatlan
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
         binding.btnLocation.setOnClickListener{
                 if (hasLocationPermission()) {
+                    binding.addLatlon.visibility = View.INVISIBLE
+                    binding.textInputLatlon.visibility = View.INVISIBLE
                     fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
                         if (location == null ){
                             locationRequest = LocationRequest()
@@ -110,6 +116,8 @@ class AddDiscoveryFragment : Fragment() {
                                         val location = locationResult.lastLocation
                                         lat = location.latitude.toString()
                                         lon = location.longitude.toString()
+                                        val valuelatlan = "lat, lon: $lat, $lon"
+                                        latlan.text = valuelatlan
                                     }
                                 }
                             }
