@@ -28,7 +28,6 @@ import java.util.*
 import androidx.camera.core.ImageCapture.Metadata
 import androidx.camera.view.PreviewView
 import androidx.core.net.toFile
-import androidx.core.view.setPadding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
@@ -90,7 +89,7 @@ class CameraFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.camera_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_camera, container, false)
         view.btnTakePicture.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_photo_view_pager)}
         view.btnGallery.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_galleryImageView)}
         _binding = CameraFragmentBinding.inflate(inflater, container, false)
