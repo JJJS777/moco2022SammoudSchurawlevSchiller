@@ -91,8 +91,6 @@ class CameraFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_camera, container, false)
-        view.btnTakePicture.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_photo_view_pager)}
-        view.btnGallery.setOnClickListener{Navigation.findNavController(view).navigate(R.id.action_cameraLayout_to_galleryImageView)}
         _binding = FragmentCameraBinding.inflate(inflater, container, false)
         return binding.root
     }
