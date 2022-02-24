@@ -54,6 +54,12 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/search_animal_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/search_for_animal_button_txt"/>
+
             <!--Hier Locationen-->
             <LinearLayout
                 android:id="@+id/container_location"
