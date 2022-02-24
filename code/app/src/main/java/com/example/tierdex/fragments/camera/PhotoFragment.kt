@@ -31,7 +31,7 @@ class PhotoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val uri = arguments!!.getString("photo")
+        val uri = requireArguments().getString("photo")
 
         showPhoto(uri!!.toUri())
 
@@ -45,7 +45,7 @@ class PhotoFragment : Fragment() {
             val fragment = AddDiscoveryFragment()
             fragment.arguments = bundle
             //navigate to addDiscoveryFragment
-            Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment)
+            Navigation.findNavController(view).navigate(R.id.action_photo_view_pager_to_addDiscoveryFragment,bundle)
         }
     }
 
