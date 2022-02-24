@@ -48,9 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:contentDescription="confirm_animal"
-                android:src="@android:drawable/"
-                />
-
+                android:padding="@dimen/xsmall"
+                android:layout_marginTop="@dimen/xxsmall"
+                android:src="@drawable/ic_baseline_check_circle_outline_36" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
