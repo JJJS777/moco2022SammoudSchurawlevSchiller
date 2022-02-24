@@ -6,7 +6,8 @@ import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.data.entities.Discovered
 import kotlinx.coroutines.launch
 
-class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) { //hier ggf. mit AndroidViewModel arbeiten
+class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao)
+    : ViewModel( ) { //hier ggf. mit AndroidViewModel arbeiten
 
 
     val allDiscoveries: LiveData<List<Discovered>> = discoveredDao.getDiscoveries().asLiveData()

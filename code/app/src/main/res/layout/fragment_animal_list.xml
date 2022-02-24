@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         tools:context=".AnimalListFragment">
 
-
         <SearchView
             android:id="@+id/animal_search"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -32,6 +31,21 @@
             tools:layout_editor_absoluteX="4dp"
             tools:layout_editor_absoluteY="32dp" />
 
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintTop_toBottomOf="@+id/animal_search"
+            app:layout_constraintBottom_toTopOf="@+id/animal_recycler_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/small"
+            android:layout_marginBottom="@dimen/xxsmall"
+            android:layout_marginLeft="@dimen/small"
+            android:padding="@dimen/xsmall"/>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/animal_recycler_view"
             android:layout_width="0dp"
@@ -44,7 +58,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animal_search"
+            app:layout_constraintTop_toBottomOf="@id/backButton"
             app:listData="@{viewModel.animalProperties}"
             app:spanCount="1"
             tools:itemCount="32"

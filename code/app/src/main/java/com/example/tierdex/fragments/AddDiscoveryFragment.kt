@@ -84,6 +84,7 @@ class AddDiscoveryFragment : Fragment() {
         )
     }
 
+    //where you can then bind properties to specific views
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -150,6 +151,11 @@ class AddDiscoveryFragment : Fragment() {
         binding.btnCamera.setOnClickListener {
             Navigation.findNavController(view)
                 .navigate(R.id.action_addDiscoveryFragment_to_cameraLayout)
+        }
+
+        binding.searchAnimalButton.setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate( R.id.action_addDiscoveryFragment_to_animalListFragment )
         }
 
         binding.saveAction.setOnClickListener {
