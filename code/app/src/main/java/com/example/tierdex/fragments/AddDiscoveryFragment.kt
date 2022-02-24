@@ -106,8 +106,10 @@ class AddDiscoveryFragment : Fragment() {
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
-                                        lat = location.latitude.toString()
-                                        lon = location.longitude.toString()
+                                        if(location !=null) {
+                                            lat = location.latitude.toString()
+                                            lon = location.longitude.toString()
+                                        }
                                         val valuelatlan = "lat, lon: $lat, $lon"
                                         latlan.text = valuelatlan
                                     }
