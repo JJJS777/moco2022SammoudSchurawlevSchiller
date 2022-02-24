@@ -15,10 +15,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
+import androidx.navigation.Navigation
 import com.example.tierdex.R
 import com.example.tierdex.adapter.GridImageAdapter
 import java.io.File
 import com.example.tierdex.databinding.FragmentGallerieBinding
+import com.example.tierdex.fragments.AddDiscoveryFragment
 import com.example.tierdex.model.Permissions
 import com.squareup.picasso.Picasso
 import java.lang.Exception
@@ -36,6 +38,9 @@ class GallerieFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
 
     private var gridWidth :Int = 0
     private var imageWidth : Int = 0
+
+    private lateinit var file: File
+    private lateinit var uri : Uri
 
 
     private val IMAGE_LOADER_ID = 1
@@ -60,12 +65,14 @@ class GallerieFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         managePermissions = Permissions(requireActivity(), PERMISSIONS, PERMISSION_CODE)
         managePermissions.checkPermissions()
 
-        binding.backButton.setOnClickListener {
-            TODO()
-        }
 
         binding.nextButton.setOnClickListener {
-            TODO()
+            val bundle = Bundle()
+            bundle.putString("photo",uri.toString())
+            val fragment = AddDiscoveryFragment()
+            fragment.arguments = bundle
+
+            Navigation.findNavController(view).navigate(R.id.action_galleryImageView_to_addDiscoveryFragment, bundle)
         }
 
     }
@@ -90,8 +97,8 @@ class GallerieFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         binding.gridView.adapter = adapter
 
         //set the first image to be displayed when the activity fragment view is inflated
-        var file = File(allImages[0])
-        var uri : Uri = Uri.fromFile(file)
+        file = File(allImages[0])
+        uri = Uri.fromFile(file)
         setImage(uri, binding.galleryImageView);
 
         binding.gridView.setOnItemClickListener { parent, view, position, id ->
@@ -140,7 +147,7 @@ class GallerieFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>{
         val sortOrder: String? = null
 
         return CursorLoader(
-            activity!!.applicationContext,
+            requireActivity().applicationContext,
             uri,
             projection,
             selection,
