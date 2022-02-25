@@ -118,6 +118,7 @@
                 android:id="@+id/gps_location_input"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xsmall"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -149,8 +150,8 @@
                 android:id="@+id/manual_location_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="invisible">
+                android:layout_marginTop="@dimen/xsmall"
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/add_country"
