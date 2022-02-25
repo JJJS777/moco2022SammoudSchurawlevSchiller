@@ -118,10 +118,17 @@
                 android:id="@+id/gps_location_input"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/small"
-                android:paddingBottom="@dimen/small"
-                android:layout_marginBottom="@dimen/xsmall">
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:layout_marginEnd="@dimen/small"
+                    android:src="@drawable/ic_baseline_add_location_48"
+                    app:tint="#000000" />
 
                 <TextView
                     android:id="@+id/textlatlan"
@@ -130,18 +137,8 @@
                     android:layout_marginEnd="@dimen/xsmall"
                     android:hint="location"
                     android:text="@string/no_location_given"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/btnLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00FFFFFF"
-                    android:backgroundTint="#000000"
-                    android:gravity="right"
-                    android:src="@drawable/ic_baseline_add_location_24"
-                    app:tint="#000000" />
-
+                    android:textSize="16sp"
+                    android:padding="@dimen/xxsmall"/>
             </LinearLayout>
 
             <!--END GPS Button-->
