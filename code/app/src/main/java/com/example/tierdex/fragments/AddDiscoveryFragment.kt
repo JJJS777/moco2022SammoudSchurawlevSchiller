@@ -84,8 +84,12 @@ class AddDiscoveryFragment : Fragment() {
     private fun addNewDisco() {
         viewModel.addNewDiscovery(
             binding.textInputAnimalName.text.toString(),
+            binding.textInputDescription.text.toString(),
             coordinates = Coordinates( lat, lon ),
-            camPicture = uri!!
+            camPicture = uri!!,
+            binding.textCountry.text.toString(),
+            binding.textCity.text.toString(),
+            binding.textPostcode.text.toString().toInt()
         )
     }
 

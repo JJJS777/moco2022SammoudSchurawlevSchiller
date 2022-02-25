@@ -13,10 +13,18 @@ data class Discovered (
     val discoID: Int = 0,
     @ColumnInfo(name = "name")
     val animalName: String,
+    @ColumnInfo(name = "description")
+    val description: String,
     @Embedded
     val coordinates: Coordinates,
     @ColumnInfo(name = "picture")
-    val camPicture: String
+    val camPicture: String,
+    @ColumnInfo(name = "country")
+    val country: String,
+    @ColumnInfo(name = "city")
+    val city: String,
+    @ColumnInfo(name = "postcode")
+    val postcode: Int
 )
 
 
