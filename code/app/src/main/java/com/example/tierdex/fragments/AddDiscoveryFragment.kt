@@ -2,8 +2,6 @@ package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.location.Location
 import android.net.ConnectivityManager
@@ -11,17 +9,15 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import coil.clear
 import com.bumptech.glide.Glide
 import com.example.tierdex.AddDiscoveryViewModel
 import com.example.tierdex.AddDiscoveryViewModelFactory
@@ -29,18 +25,11 @@ import com.example.tierdex.R
 import com.example.tierdex.TierDexApplication
 import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.vmadalin.easypermissions.EasyPermissions
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
+import com.vmadalin.easypermissions.EasyPermissions
 
 
 const val KEY_ANIMAL_NAME = "animal_name_key"
@@ -54,6 +43,7 @@ class AddDiscoveryFragment : Fragment() {
     }
 
     lateinit var binding: FragmentAddDiscoveryBinding
+    //TODO kann man hier placeholder übergebne?
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -125,6 +115,16 @@ class AddDiscoveryFragment : Fragment() {
         )
     }
 
+    private fun clearInput(){
+        binding.textInputAnimalName.text?.clear()
+        binding.textInputDescription.text?.clear()
+        binding.textCountry.text?.clear()
+        binding.textCity.text?.clear()
+        binding.textPostcode.text?.clear()
+        binding.photoView.setImageResource( R.drawable.ic_photo)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -217,18 +217,15 @@ class AddDiscoveryFragment : Fragment() {
                     requireContext(), "Animal Name, Country and City are mandatory",
                     Toast.LENGTH_LONG
                 ).show()
+            } else if (uri != null && checkInternetState()) {
+                saveToFirebase(uri!!)
+                clearInput()
+
             } else {
                 addNewDisco()
-                if (uri != null && checkInternetState()) {
-                    saveToFirebase(uri!!)
-                }
-                binding.textInputAnimalName.text?.clear()
-                binding.textInputDescription.text?.clear()
-                binding.textCountry.text?.clear()
-                binding.textCity.text?.clear()
-                binding.textPostcode.text?.clear()
-                binding.photoView.setImageResource( R.drawable.ic_photo)
-
+                Toast.makeText(requireContext(), "Saved to Room, Because not Connection"
+                    ,Toast.LENGTH_LONG).show()
+                clearInput()
             }
         }
     }
@@ -244,7 +241,7 @@ class AddDiscoveryFragment : Fragment() {
     private fun requestLocationPermission() {
         EasyPermissions.requestPermissions(
             this,
-            "This App cannot work without Location permission",
+            "This App cannot proper work without Location permission",
             PERMISSION_LOCATION_REQUEST_CODE,
             android.Manifest.permission.ACCESS_FINE_LOCATION
         )
@@ -325,6 +322,7 @@ class AddDiscoveryFragment : Fragment() {
         outState.putString(KEY_ANIMAL_NAME, textInputAnimalName)
         outState.putString(KEY_DESCRIPTION, textInputDescription)
     }
+
 
 }
 
