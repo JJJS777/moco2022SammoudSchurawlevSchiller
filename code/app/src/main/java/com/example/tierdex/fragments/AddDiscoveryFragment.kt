@@ -102,12 +102,24 @@ class AddDiscoveryFragment : Fragment() {
                                 LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
                             locationCallback = object : LocationCallback() {
                                 override fun onLocationResult(locationResult: LocationResult) {
-                                    locationResult ?: return
+                                    locationResult?: return
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
-                                        lat = location.latitude.toString()
-                                        lon = location.longitude.toString()
+                                            lat = location.latitude.toString()
+                                            lon = location.longitude.toString()
+                                        val geocoder = Geocoder(requireContext())
+                                        val currentLocation = geocoder.getFromLocation(
+                                            location.latitude,
+                                            location.longitude,
+                                            1
+                                        )
+                                        val countryName = currentLocation[0].countryName
+                                        val city = currentLocation[0].locality
+                                        val plz = currentLocation[0].postalCode
+                                        binding.textCity.setText(city)
+                                        binding.textCountry.setText(countryName)
+                                        binding.textPostcode.setText(plz)
                                         val valuelatlan = "lat, lon: $lat, $lon"
                                         latlan.text = valuelatlan
                                     }
@@ -116,21 +128,21 @@ class AddDiscoveryFragment : Fragment() {
                         } else {
                             lat = location.latitude.toString()
                             lon = location.longitude.toString()
+                            val geocoder = Geocoder(requireContext())
+                            val currentLocation = geocoder.getFromLocation(
+                                location.latitude,
+                                location.longitude,
+                                1
+                            )
+                            val countryName = currentLocation[0].countryName
+                            val city = currentLocation[0].locality
+                            val plz = currentLocation[0].postalCode
+                            binding.textCity.setText(city)
+                            binding.textCountry.setText(countryName)
+                            binding.textPostcode.setText(plz)
+                            val valuelatlan = "lat, lon: $lat, $lon"
+                            latlan.text = valuelatlan
                         }
-                        val geocoder = Geocoder(requireContext())
-                        val currentLocation = geocoder.getFromLocation(
-                            location.latitude,
-                            location.longitude,
-                            1
-                        )
-                        val countryName = currentLocation[0].countryName
-                        val city = currentLocation[0].locality
-                        val plz = currentLocation[0].postalCode
-                        binding.textCity.setText(city)
-                        binding.textCountry.setText(countryName)
-                        binding.textPostcode.setText(plz)
-                        val valuelatlan = "lat, lon: $lat, $lon"
-                        latlan.text = valuelatlan
                     }
                     break;
                 } else {
