@@ -9,13 +9,19 @@ import kotlinx.coroutines.launch
 class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) { //hier ggf. mit AndroidViewModel arbeiten
 
 
+    //ToDo wofür nutzen?
     val allDiscoveries: LiveData<List<Discovered>> = discoveredDao.getDiscoveries().asLiveData()
 
     fun addNewDiscovery( discoName: String,
+                         description: String,
                          coordinates: Coordinates,
-                         camPicture: String )
+                         camPicture: String,
+                         country: String,
+                         city: String,
+                         postcode: String )
     {
-        val newDiscovery = getNewDiscoEntry( discoName, coordinates, camPicture )
+        val newDiscovery = getNewDiscoEntry( discoName, description, coordinates,
+            camPicture, country, city, postcode )
         insertDiscovery( newDiscovery )
     }
 
@@ -27,16 +33,25 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
 
     //TODO später sollen die Daten aus dem Internet gefached werden und in Room abgespeichert
     private fun getNewDiscoEntry( discoName: String,
+                                  description: String,
                                   coordinates: Coordinates,
-                                  camPicture: String ) : Discovered
+                                  camPicture: String,
+                                  country: String,
+                                  city: String,
+                                  postcode: String ) : Discovered
     {
         return Discovered(
             animalName = discoName,
+            description = description,
             coordinates = coordinates,
-            camPicture = camPicture
+            camPicture = camPicture,
+            country = country,
+            city = city,
+            postcode = postcode
         )
     }
 
+    //ToDo wofür nutzen?
     fun retrieveDisco( id: Int ): LiveData<Discovered> = discoveredDao.getDiscovery(id).asLiveData()
 
     private fun updateDisco( disco : Discovered){
@@ -45,30 +60,45 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
         }
     }
 
+    //Nicht Implementiert
     fun deleteDisco( disco: Discovered){ viewModelScope.launch { discoveredDao.delete(disco) } }
 
     private fun  getUpdatedDiscoEntry(
         discoID: Int,
         discoName: String,
+        description: String,
         coordinates: Coordinates,
-        camPicture: String
+        camPicture: String,
+        country: String,
+        city: String,
+        postcode: String
     ): Discovered {
         return Discovered(
             discoID = discoID,
             animalName = discoName,
+            description = description,
             coordinates = coordinates,
-            camPicture = camPicture
+            camPicture = camPicture,
+            country = country,
+            city = city,
+            postcode = postcode
 
         )
     }
 
+    // Nicht Genutzt, ist vorgesehen für Änderungen
     fun updateDisco(
         discoID: Int,
         discoName: String,
+        description: String,
         coordinates: Coordinates,
-        camPicture: String
+        camPicture: String,
+        country: String,
+        city: String,
+        postcode: String
     ){
-        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, coordinates, camPicture)
+        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, description, coordinates,
+            camPicture, country, city, postcode)
         updateDisco(updatedDisco)
     }
 
