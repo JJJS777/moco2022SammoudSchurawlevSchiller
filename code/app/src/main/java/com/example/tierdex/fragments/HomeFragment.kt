@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tierdex.data.dao.DiscoveredDao
 import com.example.tierdex.databinding.FragmentHomeBinding
 import com.example.tierdex.model.Feed
 import com.example.tierdex.model.ItemAdapter
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,11 +38,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadPost()
 
-        if(checkInternetState()) {
-            loadPost()
-        }
     }
+
 
     private fun loadPost(){
         val storage = Firebase.storage
@@ -48,18 +49,27 @@ class HomeFragment : Fragment() {
         val feedList : ArrayList<Feed> = ArrayList()
 
         val listAllTask : Task<ListResult> = storageRef.listAll()
-        listAllTask.addOnCompleteListener { result ->
-            val items : List<StorageReference> = result.result!!.items
 
-            items.forEachIndexed { index, item ->
-                item.downloadUrl.addOnSuccessListener {
-                    feedList.add(Feed("User", it.toString()))
-                }.addOnCompleteListener {
-                    binding.feedRecyclerView.adapter = ItemAdapter(this,feedList)
-                    binding.feedRecyclerView.layoutManager = LinearLayoutManager(context)
+        if (checkInternetState()){
+
+            listAllTask.addOnCompleteListener { result ->
+                val items : List<StorageReference> = result.result!!.items
+
+                items.forEachIndexed { index, item ->
+                    item.downloadUrl.addOnSuccessListener {
+                        feedList.add(Feed("User", it.toString()))
+                    }.addOnCompleteListener {
+                        binding.feedRecyclerView.adapter = ItemAdapter(this,feedList)
+                        binding.feedRecyclerView.layoutManager = LinearLayoutManager(context)
+                    }
                 }
             }
+        } else {
+            //ToDo wenn internet aus firestore wenn nicht aus room lasen mit hilfe von ViewModel
+
+
         }
+
     }
 
     private fun checkInternetState() : Boolean{

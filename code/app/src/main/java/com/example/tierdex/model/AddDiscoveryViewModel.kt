@@ -51,57 +51,6 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
         )
     }
 
-    //ToDo wofür nutzen?
-    fun retrieveDisco( id: Int ): LiveData<Discovered> = discoveredDao.getDiscovery(id).asLiveData()
-
-    private fun updateDisco( disco : Discovered){
-        viewModelScope.launch {
-            discoveredDao.upadete(disco)
-        }
-    }
-
-    //Nicht Implementiert
-    fun deleteDisco( disco: Discovered){ viewModelScope.launch { discoveredDao.delete(disco) } }
-
-    private fun  getUpdatedDiscoEntry(
-        discoID: Int,
-        discoName: String,
-        description: String,
-        coordinates: Coordinates,
-        camPicture: String,
-        country: String,
-        city: String,
-        postcode: String
-    ): Discovered {
-        return Discovered(
-            discoID = discoID,
-            animalName = discoName,
-            description = description,
-            coordinates = coordinates,
-            camPicture = camPicture,
-            country = country,
-            city = city,
-            postcode = postcode
-
-        )
-    }
-
-    // Nicht Genutzt, ist vorgesehen für Änderungen
-    fun updateDisco(
-        discoID: Int,
-        discoName: String,
-        description: String,
-        coordinates: Coordinates,
-        camPicture: String,
-        country: String,
-        city: String,
-        postcode: String
-    ){
-        val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, description, coordinates,
-            camPicture, country, city, postcode)
-        updateDisco(updatedDisco)
-    }
-
     //TODO fun isEntryValid() implementieren
 }
 
