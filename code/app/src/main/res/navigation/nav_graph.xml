@@ -27,7 +27,7 @@
         android:id="@+id/addDiscoveryFragment"
         android:name="com.example.tierdex.fragments.AddDiscoveryFragment"
         android:label="add_discovery_fragment"
-        tools:layout="@layout/add_discovery_fragment" >
+        tools:layout="@layout/fragment_add_discovery" >
         <action
             android:id="@+id/action_addDiscoveryFragment_to_cameraLayout"
             app:destination="@id/cameraLayout" />
@@ -40,7 +40,7 @@
         android:id="@+id/cameraLayout"
         android:name="com.example.tierdex.fragments.camera.CameraFragment"
         android:label="add_discovery_fragment"
-        tools:layout="@layout/camera_fragment" >
+        tools:layout="@layout/fragment_camera" >
         <action
             android:id="@+id/action_cameraLayout_to_galleryImageView"
             app:destination="@id/galleryImageView" />

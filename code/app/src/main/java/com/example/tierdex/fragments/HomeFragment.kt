@@ -1,5 +1,9 @@
 package com.example.tierdex.fragments
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,7 +37,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        loadPost()
+        if(checkInternetState()) {
+            loadPost()
+        }
     }
 
     private fun loadPost(){
@@ -45,7 +51,6 @@ class HomeFragment : Fragment() {
         listAllTask.addOnCompleteListener { result ->
             val items : List<StorageReference> = result.result!!.items
 
-
             items.forEachIndexed { index, item ->
                 item.downloadUrl.addOnSuccessListener {
                     feedList.add(Feed("User", it.toString()))
@@ -54,6 +59,30 @@ class HomeFragment : Fragment() {
                     binding.feedRecyclerView.layoutManager = LinearLayoutManager(context)
                 }
             }
+        }
+    }
+
+    private fun checkInternetState() : Boolean{
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            return false
         }
     }
 }
