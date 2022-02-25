@@ -227,11 +227,13 @@ class AddDiscoveryFragment : Fragment() {
         // change metadata how u like
         val metadata = storageMetadata {
             contentType = "image/jpg"
-            setCustomMetadata("name","hier kommt name")
-            setCustomMetadata("ort", "hier kommt ort")
+            setCustomMetadata("name",binding.textInputAnimalName.text.toString())
+            setCustomMetadata("ort", binding.textCity.text.toString())
+            setCustomMetadata("postcode",binding.textPostcode.text.toString())
+            setCustomMetadata("description",binding.addDescription.toString())
         }
         // name muss auch demenstprechen angepasst werden -> ola muss raus
-        val images = storageRef.child("images/ola")
+        val images = storageRef.child("images/"+binding.textInputAnimalName.text.toString())
 
         val uploadTask = images.putFile(uri.toUri(),metadata)
 

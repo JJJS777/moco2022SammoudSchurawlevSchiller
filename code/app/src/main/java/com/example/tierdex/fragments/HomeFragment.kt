@@ -60,8 +60,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     private fun checkInternetState() : Boolean{
