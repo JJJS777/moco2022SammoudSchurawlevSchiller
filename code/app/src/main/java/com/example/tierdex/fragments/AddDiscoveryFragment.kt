@@ -1,11 +1,15 @@
 package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.location.Location
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -103,12 +107,24 @@ class AddDiscoveryFragment : Fragment() {
                                 LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
                             locationCallback = object : LocationCallback() {
                                 override fun onLocationResult(locationResult: LocationResult) {
-                                    locationResult ?: return
+                                    locationResult?: return
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
-                                        lat = location.latitude.toString()
-                                        lon = location.longitude.toString()
+                                            lat = location.latitude.toString()
+                                            lon = location.longitude.toString()
+                                        val geocoder = Geocoder(requireContext())
+                                        val currentLocation = geocoder.getFromLocation(
+                                            location.latitude,
+                                            location.longitude,
+                                            1
+                                        )
+                                        val countryName = currentLocation[0].countryName
+                                        val city = currentLocation[0].locality
+                                        val plz = currentLocation[0].postalCode
+                                        binding.textCity.setText(city)
+                                        binding.textCountry.setText(countryName)
+                                        binding.textPostcode.setText(plz)
                                         val valuelatlan = "lat, lon: $lat, $lon"
                                         latlan.text = valuelatlan
                                     }
@@ -117,21 +133,21 @@ class AddDiscoveryFragment : Fragment() {
                         } else {
                             lat = location.latitude.toString()
                             lon = location.longitude.toString()
+                            val geocoder = Geocoder(requireContext())
+                            val currentLocation = geocoder.getFromLocation(
+                                location.latitude,
+                                location.longitude,
+                                1
+                            )
+                            val countryName = currentLocation[0].countryName
+                            val city = currentLocation[0].locality
+                            val plz = currentLocation[0].postalCode
+                            binding.textCity.setText(city)
+                            binding.textCountry.setText(countryName)
+                            binding.textPostcode.setText(plz)
+                            val valuelatlan = "lat, lon: $lat, $lon"
+                            latlan.text = valuelatlan
                         }
-                        val geocoder = Geocoder(requireContext())
-                        val currentLocation = geocoder.getFromLocation(
-                            location.latitude,
-                            location.longitude,
-                            1
-                        )
-                        val countryName = currentLocation[0].countryName
-                        val city = currentLocation[0].locality
-                        val plz = currentLocation[0].postalCode
-                        binding.textCity.setText(city)
-                        binding.textCountry.setText(countryName)
-                        binding.textPostcode.setText(plz)
-                        val valuelatlan = "lat, lon: $lat, $lon"
-                        latlan.text = valuelatlan
                     }
                     break;
                 } else {
@@ -155,7 +171,7 @@ class AddDiscoveryFragment : Fragment() {
 
         binding.saveAction.setOnClickListener {
             addNewDisco()
-            if (uri != null){
+            if (uri != null && checkInternetState()){
                 saveToFirebase(uri!!)
             }
         }
@@ -199,17 +215,44 @@ class AddDiscoveryFragment : Fragment() {
         }
     }
 
+
+    private fun checkInternetState() : Boolean{
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            return false
+        }
+    }
+
     private fun saveToFirebase(uri : String){
         val storageRef = Firebase.storage.reference
 
         // change metadata how u like
         val metadata = storageMetadata {
             contentType = "image/jpg"
-            setCustomMetadata("name","hier kommt name")
-            setCustomMetadata("ort", "hier kommt ort")
+            setCustomMetadata("name",binding.textInputAnimalName.text.toString())
+            setCustomMetadata("ort", binding.textCity.text.toString())
+            setCustomMetadata("postcode",binding.textPostcode.text.toString())
+            setCustomMetadata("description",binding.addDescription.toString())
         }
         // name muss auch demenstprechen angepasst werden -> ola muss raus
-        val images = storageRef.child("images/ola")
+        val images = storageRef.child("images/"+binding.textInputAnimalName.text.toString())
 
         val uploadTask = images.putFile(uri.toUri(),metadata)
 

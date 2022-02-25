@@ -60,11 +60,11 @@
                     android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+<!--            <Button
                 android:id="@+id/search_animal_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/search_for_animal_button_txt" />
+                android:text="@string/search_for_animal_button_txt" />-->
         </LinearLayout>
         <!--End container animal properties-->
 
@@ -118,10 +118,18 @@
                 android:id="@+id/gps_location_input"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/small"
-                android:paddingBottom="@dimen/small"
-                android:layout_marginBottom="@dimen/xsmall">
+                android:layout_marginTop="@dimen/xsmall"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btnLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:backgroundTint="#000000"
+                    android:layout_marginEnd="@dimen/small"
+                    android:src="@drawable/ic_baseline_add_location_48"
+                    app:tint="#000000" />
 
                 <TextView
                     android:id="@+id/textlatlan"
@@ -130,18 +138,8 @@
                     android:layout_marginEnd="@dimen/xsmall"
                     android:hint="location"
                     android:text="@string/no_location_given"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/btnLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00FFFFFF"
-                    android:backgroundTint="#000000"
-                    android:gravity="right"
-                    android:src="@drawable/ic_baseline_add_location_24"
-                    app:tint="#000000" />
-
+                    android:textSize="16sp"
+                    android:padding="@dimen/xxsmall"/>
             </LinearLayout>
 
             <!--END GPS Button-->
@@ -152,8 +150,8 @@
                 android:id="@+id/manual_location_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="invisible">
+                android:layout_marginTop="@dimen/xsmall"
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/add_country"
