@@ -42,7 +42,7 @@
                 app:imageUrl="@{animal.imgSrcUrl}"
                 tools:src="@tools:sample/backgrounds/scenic"/>
 
-            <ImageButton
+           <!-- <ImageButton
                 android:id="@+id/confirm_animal_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 android:contentDescription="confirm_animal"
                 android:padding="@dimen/xsmall"
                 android:layout_marginTop="@dimen/xxsmall"
-                android:src="@drawable/ic_baseline_check_circle_outline_36" />
+                android:src="@drawable/ic_baseline_check_circle_outline_36" />-->
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
