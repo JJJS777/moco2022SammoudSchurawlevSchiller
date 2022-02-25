@@ -159,6 +159,13 @@
                 android:layout_marginBottom="@dimen/xxsmall"
                 android:text="@string/add_picture_header" />
 
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:id="@+id/photoView"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_image_not_supported_24" />
+
             <ImageButton
                 android:id="@+id/btnCamera"
                 android:layout_width="match_parent"
@@ -166,12 +173,6 @@
                 android:layout_gravity="center_horizontal|bottom"
                 android:contentDescription="@string/camera"
                 android:src="@android:drawable/ic_menu_camera" />
-
-            <ImageView
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:id="@+id/photoView"
-                android:layout_marginTop="10dp"/>
 
             <Button
                 android:id="@+id/save_action"

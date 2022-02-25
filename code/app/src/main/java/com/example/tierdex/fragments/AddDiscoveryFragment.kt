@@ -3,7 +3,6 @@ package com.example.tierdex.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.location.Location
 import android.net.ConnectivityManager
@@ -11,14 +10,15 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
@@ -28,18 +28,13 @@ import com.example.tierdex.R
 import com.example.tierdex.TierDexApplication
 import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.vmadalin.easypermissions.EasyPermissions
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
+import com.vmadalin.easypermissions.EasyPermissions
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
+
 
 class AddDiscoveryFragment : Fragment() {
 
@@ -70,7 +65,7 @@ class AddDiscoveryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddDiscoveryBinding.inflate(inflater)
         if(!hasLocationPermission() && askedForLocationPermission){
             binding.manualLocationInput.visibility = View.VISIBLE
@@ -140,8 +135,8 @@ class AddDiscoveryFragment : Fragment() {
         }
 
         uri = requireArguments().getString("photo")
-
-        if(uri != null){
+        Log.d("TEST",uri.toString())
+        if(uri.toString() != "None" ){
             setPhoto(uri!!.toUri())
         }
 
@@ -151,9 +146,17 @@ class AddDiscoveryFragment : Fragment() {
         }
 
         binding.saveAction.setOnClickListener {
-            addNewDisco()
-            if (uri != null && checkInternetState()){
-                saveToFirebase(uri!!)
+            if(binding.textInputAnimalName.text != null){
+                addNewDisco()
+                if (uri.toString() != "None"  && checkInternetState()){
+                    saveToFirebase(uri!!)
+                }else if (checkInternetState()){
+                    val drawable = binding.photoView.drawable.toBitmap()
+                    val newUri = getImageUri(drawable)
+                    saveToFirebase(newUri.toString())
+                }
+            }else{
+                Toast.makeText(context,"Animal Name is mandotary",Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -221,18 +224,28 @@ class AddDiscoveryFragment : Fragment() {
         }
     }
 
+    private fun getImageUri(inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path =
+            MediaStore.Images.Media.insertImage(context?.contentResolver , inImage, "TierDex", null)
+        return Uri.parse(path)
+    }
+
     private fun saveToFirebase(uri : String){
         val storageRef = Firebase.storage.reference
+
+        val tsLong = System.currentTimeMillis() / 1000
 
         // change metadata how u like
         val metadata = storageMetadata {
             contentType = "image/jpg"
+            setCustomMetadata("timestamp",tsLong.toString())
             setCustomMetadata("name",binding.textInputAnimalName.text.toString())
             setCustomMetadata("ort", binding.textCity.text.toString())
             setCustomMetadata("postcode",binding.textPostcode.text.toString())
-            setCustomMetadata("description",binding.addDescription.toString())
+            setCustomMetadata("description",binding.textInputDescription.text.toString())
         }
-        // name muss auch demenstprechen angepasst werden -> ola muss raus
         val images = storageRef.child("images/"+binding.textInputAnimalName.text.toString())
 
         val uploadTask = images.putFile(uri.toUri(),metadata)
@@ -242,6 +255,7 @@ class AddDiscoveryFragment : Fragment() {
             // Handle unsuccessful uploads
         }.addOnSuccessListener {
             Toast.makeText(requireContext(),"Upload successfull",Toast.LENGTH_LONG).show()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_addDiscoveryFragment_to_homeFragment) }
         }
 
     }

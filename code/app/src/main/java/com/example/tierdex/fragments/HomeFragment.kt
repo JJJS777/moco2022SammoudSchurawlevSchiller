@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ListResult
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -51,12 +54,28 @@ class HomeFragment : Fragment() {
         listAllTask.addOnCompleteListener { result ->
             val items : List<StorageReference> = result.result!!.items
 
+
             items.forEachIndexed { index, item ->
-                item.downloadUrl.addOnSuccessListener {
-                    feedList.add(Feed("User", it.toString()))
+                // dont know why i need to call this first, but it just works like this
+                item.metadata.addOnSuccessListener {
+                }
+                item.downloadUrl.addOnSuccessListener { uri ->
+                    item.metadata.addOnSuccessListener { metadata ->
+
+
+                        Log.d("TEST",metadata.getCustomMetadata("name").toString()
+                                + metadata.getCustomMetadata("timestamp").toString())
+                        feedList.add(Feed(
+                            metadata.getCustomMetadata("name").toString(),
+                            uri.toString(),
+                            metadata.getCustomMetadata("timestamp").toString()))
+                    }
                 }.addOnCompleteListener {
-                    binding.feedRecyclerView.adapter = ItemAdapter(this,feedList)
-                    binding.feedRecyclerView.layoutManager = LinearLayoutManager(context)
+                    feedList.sortedByDescending { it.date.toLong() }
+                    binding.feedRecyclerView.adapter =
+                        ItemAdapter(this,requireContext(),feedList)
+                    binding.feedRecyclerView.layoutManager =
+                        LinearLayoutManager(context)
                 }
             }
         }
