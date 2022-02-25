@@ -47,7 +47,9 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
             camPicture = camPicture,
             country = country,
             city = city,
-            postcode = postcode
+            postcode = postcode,
+            userID = "1",
+            imageUrl = "empty"
         )
     }
 

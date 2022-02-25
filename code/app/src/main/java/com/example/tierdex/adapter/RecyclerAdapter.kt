@@ -13,8 +13,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tierdex.R
+import com.example.tierdex.data.entities.Discovered
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import java.io.File
@@ -24,7 +26,7 @@ import java.lang.Exception
 
 class ItemAdapter(
     private val context: Fragment,
-    private val dataset: List<Feed>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+    private val dataset: LiveData<List<Discovered>>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     class ItemViewHolder( view: View ) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.ProfileTitle)
@@ -40,12 +42,12 @@ class ItemAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
+        val item = dataset.value!![position]
         //holder.textView.text = context.resources.getString(item.userID)
         Picasso.get().load(item.imageUrl).into(holder.imageView)
 
         holder.shareButton.setOnClickListener {
-            shareImage(item.imageUrl)
+            shareImage(item.imageUrl!!)
         }
     }
 
@@ -71,7 +73,7 @@ class ItemAdapter(
         })
     }
 
-    override fun getItemCount(): Int  = dataset.size
+    override fun getItemCount(): Int  = dataset.value!!.size
 
     private fun getBibmap(bitmap: Bitmap?) : Uri?{
         var bmpUri : Uri? = null

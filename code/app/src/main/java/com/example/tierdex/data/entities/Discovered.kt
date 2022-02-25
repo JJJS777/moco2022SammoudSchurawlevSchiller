@@ -24,7 +24,9 @@ data class Discovered (
     @ColumnInfo(name = "city")
     val city: String,
     @ColumnInfo(name = "postcode")
-    val postcode: String?
+    val postcode: String?,
+    val userID : String?,
+    val imageUrl : String?
 )
 
 

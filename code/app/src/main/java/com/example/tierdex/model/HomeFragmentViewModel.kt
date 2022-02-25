@@ -1,7 +1,10 @@
 package com.example.tierdex.model
 
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.*
 import com.example.tierdex.AddDiscoveryViewModel
+import com.example.tierdex.AddDiscoveryViewModelFactory
+import com.example.tierdex.TierDexApplication
 import com.example.tierdex.data.dao.DiscoveredDao
 import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.data.entities.Discovered
@@ -14,14 +17,13 @@ class HomeFragmentViewModel(private val discoveredDao: DiscoveredDao): ViewModel
     //Nicht Implementiert
     fun deleteDisco( disco: Discovered){ viewModelScope.launch { discoveredDao.delete(disco) } }
 
+    fun retrieveDisco( id: Int ): LiveData<Discovered> = discoveredDao.getDiscovery(id).asLiveData()
+
     private fun updateDisco( disco : Discovered){
         viewModelScope.launch {
             discoveredDao.upadete(disco)
         }
     }
-
-    //ToDo wofür nutzen?
-    fun retrieveDisco( id: Int ): LiveData<Discovered> = discoveredDao.getDiscovery(id).asLiveData()
 
     private fun  getUpdatedDiscoEntry(
         discoID: Int,
@@ -41,8 +43,9 @@ class HomeFragmentViewModel(private val discoveredDao: DiscoveredDao): ViewModel
             camPicture = camPicture,
             country = country,
             city = city,
-            postcode = postcode
-
+            postcode = postcode,
+            userID = "1",
+            imageUrl = "empty"
         )
     }
 
