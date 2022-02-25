@@ -1,11 +1,15 @@
 package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.location.Location
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -148,7 +152,7 @@ class AddDiscoveryFragment : Fragment() {
 
         binding.saveAction.setOnClickListener {
             addNewDisco()
-            if (uri != null){
+            if (uri != null && checkInternetState()){
                 saveToFirebase(uri!!)
             }
         }
@@ -189,6 +193,31 @@ class AddDiscoveryFragment : Fragment() {
                     .load(uri)
                     .into(photo)
             }
+        }
+    }
+
+
+    private fun checkInternetState() : Boolean{
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            return false
         }
     }
 
