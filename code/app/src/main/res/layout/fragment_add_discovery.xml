@@ -172,7 +172,7 @@
                     android:id="@+id/add_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City"
+                    android:hint="Closest City"
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -228,7 +228,9 @@
                     android:id="@+id/photoView"
                     android:layout_width="250dp"
                     android:layout_height="250dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@tools:sample/avatars"/>
             </LinearLayout>
             <!--END Camera Container-->
 

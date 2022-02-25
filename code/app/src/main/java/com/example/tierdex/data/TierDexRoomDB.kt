@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.tierdex.data.dao.DiscoveredDao
 import com.example.tierdex.data.entities.Discovered
 
-@Database(entities = [Discovered::class], version = 4, exportSchema = false )
+@Database(entities = [Discovered::class], version = 6, exportSchema = false )
 abstract class TierDexRoomDB: RoomDatabase() {
 
     abstract fun discoveredDao(): DiscoveredDao

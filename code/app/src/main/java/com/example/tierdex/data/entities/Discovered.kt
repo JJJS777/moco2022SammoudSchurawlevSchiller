@@ -14,17 +14,17 @@ data class Discovered (
     @ColumnInfo(name = "name")
     val animalName: String,
     @ColumnInfo(name = "description")
-    val description: String,
+    val description: String?,
     @Embedded
-    val coordinates: Coordinates,
+    val coordinates: Coordinates?,
     @ColumnInfo(name = "picture")
-    val camPicture: String,
+    val camPicture: String?,
     @ColumnInfo(name = "country")
     val country: String,
     @ColumnInfo(name = "city")
     val city: String,
     @ColumnInfo(name = "postcode")
-    val postcode: Int
+    val postcode: String?
 )
 
 

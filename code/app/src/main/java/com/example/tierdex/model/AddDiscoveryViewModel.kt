@@ -18,7 +18,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
                          camPicture: String,
                          country: String,
                          city: String,
-                         postcode: Int )
+                         postcode: String )
     {
         val newDiscovery = getNewDiscoEntry( discoName, description, coordinates,
             camPicture, country, city, postcode )
@@ -38,7 +38,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
                                   camPicture: String,
                                   country: String,
                                   city: String,
-                                  postcode: Int ) : Discovered
+                                  postcode: String ) : Discovered
     {
         return Discovered(
             animalName = discoName,
@@ -71,7 +71,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
         camPicture: String,
         country: String,
         city: String,
-        postcode: Int
+        postcode: String
     ): Discovered {
         return Discovered(
             discoID = discoID,
@@ -95,7 +95,7 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
         camPicture: String,
         country: String,
         city: String,
-        postcode: Int
+        postcode: String
     ){
         val updatedDisco = getUpdatedDiscoEntry(discoID, discoName, description, coordinates,
             camPicture, country, city, postcode)
