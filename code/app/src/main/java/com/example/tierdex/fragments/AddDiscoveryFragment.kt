@@ -42,6 +42,11 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
 
+
+const val KEY_ANIMAL_NAME = "animal_name_key"
+const val KEY_DESCRIPTION = "description_key"
+
+
 class AddDiscoveryFragment : Fragment() {
 
     companion object {
@@ -54,6 +59,15 @@ class AddDiscoveryFragment : Fragment() {
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
     private var currentLocation: Location? = null
+
+
+
+    private var textInputAnimalName: String = ""
+    private var textInputDescription: String = ""
+    private var textCountry: String = ""
+    private var textCity: String = ""
+    private var textPostcode: String = ""
+
 
     private var lat = "37.4220"
     private var lon = "-122.0840"
@@ -68,6 +82,15 @@ class AddDiscoveryFragment : Fragment() {
         )
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if( savedInstanceState != null ) {
+            textInputAnimalName = savedInstanceState.getString( KEY_ANIMAL_NAME, "leer" )
+            textInputDescription = savedInstanceState.getString( KEY_DESCRIPTION, "leer" )
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,6 +100,14 @@ class AddDiscoveryFragment : Fragment() {
             binding.manualLocationInput.visibility = View.VISIBLE
         }
         return binding.root
+    }
+
+    private fun bindingHelper(){
+        textInputAnimalName = binding.textInputAnimalName.text.toString()
+        textInputDescription = binding.textInputDescription.text.toString()
+        textCountry = binding.textCountry.text.toString()
+        textCity = binding.textCity.text.toString()
+        textPostcode = binding.textPostcode.text.toString()
     }
 
     /**
@@ -98,6 +129,7 @@ class AddDiscoveryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val latlan = binding.textlatlan
+
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
         binding.btnLocation.setOnClickListener {
@@ -199,7 +231,6 @@ class AddDiscoveryFragment : Fragment() {
 
             }
         }
-
     }
 
     //returns true if permission granted
@@ -277,17 +308,22 @@ class AddDiscoveryFragment : Fragment() {
             setCustomMetadata("description", binding.addDescription.toString())
         }
         // name muss auch demenstprechen angepasst werden -> ola muss raus
-        val images = storageRef.child("images/" + binding.textInputAnimalName.text.toString())
+        val images = storageRef.child("images/" + binding.textInputAnimalName
+            .text.toString())
 
         val uploadTask = images.putFile(uri.toUri(), metadata)
-
 
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
         }.addOnSuccessListener {
             Toast.makeText(requireContext(), "Upload successfull", Toast.LENGTH_LONG).show()
         }
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_ANIMAL_NAME, textInputAnimalName)
+        outState.putString(KEY_DESCRIPTION, textInputDescription)
     }
 
 }
