@@ -39,8 +39,10 @@
     <ImageView
         android:id="@+id/ivPost"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:scaleType="fitXY"
+        android:layout_marginRight="@dimen/small"
+        android:layout_marginLeft="@dimen/small"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:src = "@mipmap/ic_launcher"
         app:layout_constraintTop_toBottomOf="@id/c1Top"/>

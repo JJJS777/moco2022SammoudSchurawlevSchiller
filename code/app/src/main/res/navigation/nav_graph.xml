@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.tierdex.fragments.HomeFragment"
-        android:label="HomeFragment"
-         tools:layout="@layout/fragment_home" />
+        android:label="Your Discoveries"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/animalListFragment"
         android:name="com.example.tierdex.fragments.AnimalListFragment"
-        android:label="AnimalListFragment"
+        android:label="Discover"
         tools:layout="@layout/fragment_animal_list" />
 
     <fragment
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/addDiscoveryFragment"
         android:name="com.example.tierdex.fragments.AddDiscoveryFragment"
-        android:label="add_discovery_fragment"
+        android:label="Add new Discovery"
         tools:layout="@layout/fragment_add_discovery" >
         <action
             android:id="@+id/action_addDiscoveryFragment_to_cameraLayout"
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/cameraLayout"
         android:name="com.example.tierdex.fragments.camera.CameraFragment"
-        android:label="add_discovery_fragment"
+        android:label="Camera"
         tools:layout="@layout/fragment_camera" >
         <action
             android:id="@+id/action_cameraLayout_to_galleryImageView"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/galleryImageView"
         android:name="com.example.tierdex.fragments.camera.GallerieFragment"
-        android:label="add_discovery_fragment"
+        android:label="Image Gallery"
         tools:layout="@layout/fragment_gallerie" >
         <action
             android:id="@+id/action_galleryImageView_to_addDiscoveryFragment"
@@ -63,7 +63,7 @@
     <fragment
         android:id="@+id/photo_view_pager"
         android:name="com.example.tierdex.fragments.camera.PhotoFragment"
-        android:label="add_discovery_fragment"
+        android:label="Photo"
         tools:layout="@layout/fragment_photo" >
         <action
             android:id="@+id/action_photo_view_pager_to_cameraLayout"

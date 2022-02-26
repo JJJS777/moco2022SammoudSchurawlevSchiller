@@ -37,7 +37,6 @@
                 android:id="@+id/animal_image"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
-                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{animal.imgSrcUrl}"
                 tools:src="@tools:sample/backgrounds/scenic"/>
