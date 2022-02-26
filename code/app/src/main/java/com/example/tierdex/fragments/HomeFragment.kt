@@ -61,8 +61,6 @@ class HomeFragment : Fragment() {
                 }
                 item.downloadUrl.addOnSuccessListener { uri ->
                     item.metadata.addOnSuccessListener { metadata ->
-
-
                         Log.d("TEST",metadata.getCustomMetadata("name").toString()
                                 + metadata.getCustomMetadata("timestamp").toString())
                         feedList.add(Feed(
@@ -71,6 +69,7 @@ class HomeFragment : Fragment() {
                             metadata.getCustomMetadata("timestamp").toString()))
                     }
                 }.addOnCompleteListener {
+                    Thread.sleep(1000)
                     feedList.sortedByDescending { it.date.toLong() }
                     binding.feedRecyclerView.adapter =
                         ItemAdapter(this,requireContext(),feedList)
