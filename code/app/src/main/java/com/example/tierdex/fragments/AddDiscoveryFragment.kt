@@ -88,52 +88,70 @@ class AddDiscoveryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val latlan = binding.textlatlan
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
-        binding.btnLocation.setOnClickListener{
+        binding.btnLocation.setOnClickListener {
+            while (true) {
                 if (hasLocationPermission()) {
-                    binding.manualLocationInput.visibility = View.VISIBLE
                     fusedLocationProviderClient.lastLocation.addOnSuccessListener { location ->
-                        if (location == null ){
+                        if (location == null) {
                             locationRequest = LocationRequest()
                             locationRequest.interval = 50000
                             locationRequest.fastestInterval = 50000
                             locationRequest.smallestDisplacement = 170f // 170 m = 0.1 mile
-                            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
+                            locationRequest.priority =
+                                LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
                             locationCallback = object : LocationCallback() {
                                 override fun onLocationResult(locationResult: LocationResult) {
                                     locationResult?: return
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
-                                        lat = location.latitude.toString()
-                                        lon = location.longitude.toString()
+                                            lat = location.latitude.toString()
+                                            lon = location.longitude.toString()
+                                        val geocoder = Geocoder(requireContext())
+                                        val currentLocation = geocoder.getFromLocation(
+                                            location.latitude,
+                                            location.longitude,
+                                            1
+                                        )
+                                        val countryName = currentLocation[0].countryName
+                                        val city = currentLocation[0].locality
+                                        val plz = currentLocation[0].postalCode
+                                        binding.textCity.setText(city)
+                                        binding.textCountry.setText(countryName)
+                                        binding.textPostcode.setText(plz)
                                         val valuelatlan = "lat, lon: $lat, $lon"
                                         latlan.text = valuelatlan
                                     }
                                 }
                             }
-                        }else {
+                        } else {
+                            lat = location.latitude.toString()
+                            lon = location.longitude.toString()
                             val geocoder = Geocoder(requireContext())
                             val currentLocation = geocoder.getFromLocation(
                                 location.latitude,
                                 location.longitude,
                                 1
                             )
-                            lat = location.latitude.toString()
-                            lon = location.longitude.toString()
-                            val countryCode = currentLocation[0].countryCode
+                            val countryName = currentLocation[0].countryName
                             val city = currentLocation[0].locality
+                            val plz = currentLocation[0].postalCode
+                            binding.textCity.setText(city)
+                            binding.textCountry.setText(countryName)
+                            binding.textPostcode.setText(plz)
+                            val valuelatlan = "lat, lon: $lat, $lon"
+                            latlan.text = valuelatlan
                         }
-                        val valuelatlan = "lat, lon: $lat, $lon"
-                        latlan.text = valuelatlan
                     }
-                } else if (askedForLocationPermission){
-                    binding.manualLocationInput.visibility = View.VISIBLE
-                }
-                else {
+                    break;
+                } else {
+                    if (askedForLocationPermission)
+                        break;
+                    else
                     requestLocationPermission()
                 }
+            }
         }
-
         uri = requireArguments().getString("photo")
         Log.d("TEST",uri.toString())
         if(uri.toString() != "None" ){
