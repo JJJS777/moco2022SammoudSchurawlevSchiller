@@ -3,7 +3,6 @@ package com.example.tierdex.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.location.Geocoder
 import android.location.Location
 import android.net.ConnectivityManager
@@ -11,14 +10,15 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
@@ -28,18 +28,17 @@ import com.example.tierdex.R
 import com.example.tierdex.TierDexApplication
 import com.example.tierdex.data.entities.Coordinates
 import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.vmadalin.easypermissions.EasyPermissions
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
+import com.vmadalin.easypermissions.EasyPermissions
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileInputStream
+
+
+const val KEY_ANIMAL_NAME = "animal_name_key"
+const val KEY_DESCRIPTION = "description_key"
+
 
 class AddDiscoveryFragment : Fragment() {
 
@@ -54,8 +53,17 @@ class AddDiscoveryFragment : Fragment() {
     private lateinit var locationRequest: LocationRequest
     private var currentLocation: Location? = null
 
-    private var lat ="37.4220"
-    private var lon ="-122.0840"
+
+
+    private var textInputAnimalName: String = ""
+    private var textInputDescription: String = ""
+    private var textCountry: String = ""
+    private var textCity: String = ""
+    private var textPostcode: String = ""
+
+
+    private var lat = "37.4220"
+    private var lon = "-122.0840"
     private var askedForLocationPermission = false
 
 
@@ -67,15 +75,32 @@ class AddDiscoveryFragment : Fragment() {
         )
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if( savedInstanceState != null ) {
+            textInputAnimalName = savedInstanceState.getString( KEY_ANIMAL_NAME, "leer" )
+            textInputDescription = savedInstanceState.getString( KEY_DESCRIPTION, "leer" )
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddDiscoveryBinding.inflate(inflater)
-        if(!hasLocationPermission() && askedForLocationPermission){
+        if (!hasLocationPermission() && askedForLocationPermission) {
             binding.manualLocationInput.visibility = View.VISIBLE
         }
         return binding.root
+    }
+
+    private fun bindingHelper(){
+        textInputAnimalName = binding.textInputAnimalName.text.toString()
+        textInputDescription = binding.textInputDescription.text.toString()
+        textCountry = binding.textCountry.text.toString()
+        textCity = binding.textCity.text.toString()
+        textPostcode = binding.textPostcode.text.toString()
     }
 
     /**
@@ -84,16 +109,32 @@ class AddDiscoveryFragment : Fragment() {
     private fun addNewDisco() {
         viewModel.addNewDiscovery(
             binding.textInputAnimalName.text.toString(),
-            coordinates = Coordinates( lat, lon ),
-            camPicture = uri!!
+            binding.textInputDescription.text.toString(),
+            coordinates = Coordinates(lat, lon),
+            camPicture = uri!!,
+            binding.textCountry.text.toString(),
+            binding.textCity.text.toString(),
+            binding.textPostcode.text.toString()
         )
     }
+
+    private fun clearInput(){
+        binding.textInputAnimalName.text?.clear()
+        binding.textInputDescription.text?.clear()
+        binding.textCountry.text?.clear()
+        binding.textCity.text?.clear()
+        binding.textPostcode.text?.clear()
+        binding.photoView.setImageResource( R.drawable.ic_photo)
+    }
+
 
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val latlan = binding.textlatlan
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireContext())
         binding.btnLocation.setOnClickListener {
             while (true) {
                 if (hasLocationPermission()) {
@@ -111,8 +152,8 @@ class AddDiscoveryFragment : Fragment() {
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
-                                            lat = location.latitude.toString()
-                                            lon = location.longitude.toString()
+                                        lat = location.latitude.toString()
+                                        lon = location.longitude.toString()
                                         val geocoder = Geocoder(requireContext())
                                         val currentLocation = geocoder.getFromLocation(
                                             location.latitude,
@@ -149,18 +190,17 @@ class AddDiscoveryFragment : Fragment() {
                             latlan.text = valuelatlan
                         }
                     }
-                    break;
+                    break
                 } else {
                     if (askedForLocationPermission)
-                        break;
+                        break
                     else
-                    requestLocationPermission()
+                        requestLocationPermission()
                 }
             }
         }
         uri = requireArguments().getString("photo")
-
-        if(uri != null){
+        if (uri.toString() != "None" ) {
             setPhoto(uri!!.toUri())
         }
 
@@ -170,16 +210,36 @@ class AddDiscoveryFragment : Fragment() {
         }
 
         binding.saveAction.setOnClickListener {
-            addNewDisco()
-            if (uri != null && checkInternetState()){
+
+            if (binding.textInputAnimalName.text.toString() == ""
+                || binding.textCity.text.toString() == ""
+                || binding.textCity.text.toString() == ""
+            ) {
+                Toast.makeText(
+                    requireContext(), "Animal Name, Country and City are mandatory",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (uri.toString() != "None"  && checkInternetState()) {
                 saveToFirebase(uri!!)
+                clearInput()
+
+            } else if (checkInternetState()){
+                val drawable = binding.photoView.drawable.toBitmap()
+                val newUri = getImageUri(drawable)
+                saveToFirebase(newUri.toString())
+                clearInput()
+
+            } else {
+                addNewDisco()
+                Toast.makeText(requireContext(), "Saved to Room, Because not Connection"
+                    ,Toast.LENGTH_LONG).show()
+                clearInput()
             }
         }
-
     }
 
     //returns true if permission granted
-    private fun hasLocationPermission()=
+    private fun hasLocationPermission() =
         EasyPermissions.hasPermissions(
             requireContext(),
             android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -189,7 +249,7 @@ class AddDiscoveryFragment : Fragment() {
     private fun requestLocationPermission() {
         EasyPermissions.requestPermissions(
             this,
-            "This App cannot work without Location permission",
+            "This App cannot proper work without Location permission",
             PERMISSION_LOCATION_REQUEST_CODE,
             android.Manifest.permission.ACCESS_FINE_LOCATION
         )
@@ -205,18 +265,19 @@ class AddDiscoveryFragment : Fragment() {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-    private fun setPhoto(uri: Uri){
+    private fun setPhoto(uri: Uri) {
         binding.photoView.let { photo ->
             photo.post {
                 Glide.with(photo)
                     .load(uri)
+                    .placeholder(R.drawable.ic_photo)
                     .into(photo)
             }
         }
     }
 
 
-    private fun checkInternetState() : Boolean{
+    private fun checkInternetState(): Boolean {
         val connectivityManager =
             context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -235,36 +296,51 @@ class AddDiscoveryFragment : Fragment() {
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 else -> false
             }
-        }else{
+        } else {
             return false
         }
     }
 
-    private fun saveToFirebase(uri : String){
+    private fun getImageUri(inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path =
+            MediaStore.Images.Media.insertImage(context?.contentResolver , inImage, "TierDex", null)
+        return Uri.parse(path)
+    }
+
+    private fun saveToFirebase(uri: String) {
         val storageRef = Firebase.storage.reference
+
+        val tsLong = System.currentTimeMillis() / 1000
 
         // change metadata how u like
         val metadata = storageMetadata {
             contentType = "image/jpg"
-            setCustomMetadata("name",binding.textInputAnimalName.text.toString())
+            setCustomMetadata("timestamp",tsLong.toString())
+            setCustomMetadata("name", binding.textInputAnimalName.text.toString())
             setCustomMetadata("ort", binding.textCity.text.toString())
-            setCustomMetadata("postcode",binding.textPostcode.text.toString())
-            setCustomMetadata("description",binding.addDescription.toString())
+            setCustomMetadata("postcode", binding.textPostcode.text.toString())
+            setCustomMetadata("description", binding.textInputDescription.text.toString())
         }
-        // name muss auch demenstprechen angepasst werden -> ola muss raus
-        val images = storageRef.child("images/"+binding.textInputAnimalName.text.toString())
+        val images = storageRef.child("images/" + binding.textInputAnimalName
+            .text.toString())
 
-        val uploadTask = images.putFile(uri.toUri(),metadata)
-
+        val uploadTask = images.putFile(uri.toUri(), metadata)
 
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
         }.addOnSuccessListener {
             Toast.makeText(requireContext(),"Upload successfull",Toast.LENGTH_LONG).show()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_addDiscoveryFragment_to_homeFragment) }
         }
-
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_ANIMAL_NAME, textInputAnimalName)
+        outState.putString(KEY_DESCRIPTION, textInputDescription)
+    }
 }
 
 
