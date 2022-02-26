@@ -146,7 +146,7 @@ class AddDiscoveryFragment : Fragment() {
         }
 
         binding.saveAction.setOnClickListener {
-            if(binding.textInputAnimalName.text != null){
+            if(binding.textInputAnimalName.text.toString() != ""){
                 addNewDisco()
                 if (uri.toString() != "None"  && checkInternetState()){
                     saveToFirebase(uri!!)
