@@ -25,4 +25,5 @@
     <string name="add_picture_header">Add Picture</string>
     <string name="add_animal_properties_Header">Add Animal Properties</string>
     <string name="search_for_animal_button_txt">search for Animal</string>
+    <string name="card_title_homefragment">title</string>
 </resources>
