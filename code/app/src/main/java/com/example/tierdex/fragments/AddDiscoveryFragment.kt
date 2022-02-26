@@ -2,6 +2,7 @@ package com.example.tierdex.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.location.Geocoder
 import android.location.Location
 import android.net.ConnectivityManager
@@ -9,11 +10,13 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -30,6 +33,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.google.firebase.storage.ktx.storageMetadata
 import com.vmadalin.easypermissions.EasyPermissions
+import java.io.ByteArrayOutputStream
 
 
 const val KEY_ANIMAL_NAME = "animal_name_key"
@@ -43,7 +47,6 @@ class AddDiscoveryFragment : Fragment() {
     }
 
     lateinit var binding: FragmentAddDiscoveryBinding
-    //TODO kann man hier placeholder übergebne?
     private var uri: String? = null
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -84,7 +87,7 @@ class AddDiscoveryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddDiscoveryBinding.inflate(inflater)
         if (!hasLocationPermission() && askedForLocationPermission) {
             binding.manualLocationInput.visibility = View.VISIBLE
@@ -124,7 +127,7 @@ class AddDiscoveryFragment : Fragment() {
         binding.photoView.setImageResource( R.drawable.ic_photo)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -145,7 +148,7 @@ class AddDiscoveryFragment : Fragment() {
                                 LocationRequest.PRIORITY_HIGH_ACCURACY //set according to your app function
                             locationCallback = object : LocationCallback() {
                                 override fun onLocationResult(locationResult: LocationResult) {
-                                    locationResult ?: return
+                                    locationResult?: return
                                     if (locationResult.locations.isNotEmpty()) {
                                         // get latest location
                                         val location = locationResult.lastLocation
@@ -187,18 +190,17 @@ class AddDiscoveryFragment : Fragment() {
                             latlan.text = valuelatlan
                         }
                     }
-                    break;
+                    break
                 } else {
                     if (askedForLocationPermission)
-                        break;
+                        break
                     else
                         requestLocationPermission()
                 }
             }
         }
         uri = requireArguments().getString("photo")
-
-        if (uri != null) {
+        if (uri.toString() != "None" ) {
             setPhoto(uri!!.toUri())
         }
 
@@ -217,8 +219,14 @@ class AddDiscoveryFragment : Fragment() {
                     requireContext(), "Animal Name, Country and City are mandatory",
                     Toast.LENGTH_LONG
                 ).show()
-            } else if (uri != null && checkInternetState()) {
+            } else if (uri.toString() != "None"  && checkInternetState()) {
                 saveToFirebase(uri!!)
+                clearInput()
+
+            } else if (checkInternetState()){
+                val drawable = binding.photoView.drawable.toBitmap()
+                val newUri = getImageUri(drawable)
+                saveToFirebase(newUri.toString())
                 clearInput()
 
             } else {
@@ -293,18 +301,28 @@ class AddDiscoveryFragment : Fragment() {
         }
     }
 
+    private fun getImageUri(inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path =
+            MediaStore.Images.Media.insertImage(context?.contentResolver , inImage, "TierDex", null)
+        return Uri.parse(path)
+    }
+
     private fun saveToFirebase(uri: String) {
         val storageRef = Firebase.storage.reference
+
+        val tsLong = System.currentTimeMillis() / 1000
 
         // change metadata how u like
         val metadata = storageMetadata {
             contentType = "image/jpg"
+            setCustomMetadata("timestamp",tsLong.toString())
             setCustomMetadata("name", binding.textInputAnimalName.text.toString())
             setCustomMetadata("ort", binding.textCity.text.toString())
             setCustomMetadata("postcode", binding.textPostcode.text.toString())
-            setCustomMetadata("description", binding.addDescription.toString())
+            setCustomMetadata("description", binding.textInputDescription.text.toString())
         }
-        // name muss auch demenstprechen angepasst werden -> ola muss raus
         val images = storageRef.child("images/" + binding.textInputAnimalName
             .text.toString())
 
@@ -313,7 +331,8 @@ class AddDiscoveryFragment : Fragment() {
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
         }.addOnSuccessListener {
-            Toast.makeText(requireContext(), "Upload successfull", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),"Upload successfull",Toast.LENGTH_LONG).show()
+            view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_addDiscoveryFragment_to_homeFragment) }
         }
     }
 
@@ -322,8 +341,6 @@ class AddDiscoveryFragment : Fragment() {
         outState.putString(KEY_ANIMAL_NAME, textInputAnimalName)
         outState.putString(KEY_DESCRIPTION, textInputDescription)
     }
-
-
 }
 
 

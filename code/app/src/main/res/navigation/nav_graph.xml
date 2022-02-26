@@ -35,6 +35,9 @@
             android:name="photo"
             app:argType="string"
             android:defaultValue="None" />
+        <action
+            android:id="@+id/action_addDiscoveryFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cameraLayout"
