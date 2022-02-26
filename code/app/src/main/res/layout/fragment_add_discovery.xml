@@ -231,7 +231,8 @@
                     android:layout_marginTop="@dimen/small"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
-                    tools:src="@tools:sample/avatars" />
+                    android:src="@drawable/ic_photo"
+                    tools:src="@tools:sample/avatars"/>
             </LinearLayout>
             <!--END Camera Container-->
 
