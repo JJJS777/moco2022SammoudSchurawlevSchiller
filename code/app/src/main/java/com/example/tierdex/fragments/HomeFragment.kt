@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tierdex.AddDiscoveryViewModelFactory
-import com.example.tierdex.TierDexApplication
+import com.example.tierdex.roomDB.TierDexApplication
 import com.example.tierdex.databinding.FragmentHomeBinding
 import com.example.tierdex.model.Feed
 import com.example.tierdex.model.HomeFragmentViewModel

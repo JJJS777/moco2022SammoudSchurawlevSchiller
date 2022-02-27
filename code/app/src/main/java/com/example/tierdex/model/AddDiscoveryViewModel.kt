@@ -1,9 +1,9 @@
 package com.example.tierdex
 
 import androidx.lifecycle.*
-import com.example.tierdex.data.dao.DiscoveredDao
-import com.example.tierdex.data.entities.Coordinates
-import com.example.tierdex.data.entities.Discovered
+import com.example.tierdex.roomDB.dao.DiscoveredDao
+import com.example.tierdex.roomDB.entities.Coordinates
+import com.example.tierdex.roomDB.entities.Discovered
 import kotlinx.coroutines.launch
 
 class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) { //hier ggf. mit AndroidViewModel arbeiten

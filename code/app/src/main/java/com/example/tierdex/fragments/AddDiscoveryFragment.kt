@@ -11,7 +11,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +24,8 @@ import com.bumptech.glide.Glide
 import com.example.tierdex.AddDiscoveryViewModel
 import com.example.tierdex.AddDiscoveryViewModelFactory
 import com.example.tierdex.R
-import com.example.tierdex.TierDexApplication
-import com.example.tierdex.data.entities.Coordinates
+import com.example.tierdex.roomDB.TierDexApplication
+import com.example.tierdex.roomDB.entities.Coordinates
 import com.example.tierdex.databinding.FragmentAddDiscoveryBinding
 import com.google.android.gms.location.*
 import com.google.firebase.ktx.Firebase

@@ -30,7 +30,7 @@ class AnimalViewModel : ViewModel() {
     }
 
     fun onSearch( animalQueryPara: String ) {
-        val apiInterface = AnimalApi.retrofitService
+        AnimalApi.retrofitService
             .getData(animalQueryPara, "imageAvailable:true")
             .enqueue(object : Callback<ApiResponse?> {
             override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {

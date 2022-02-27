@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import com.example.tierdex.adapter.AnimalAdapter
-import com.example.tierdex.data.AnimalDataSource
 import com.example.tierdex.databinding.FragmentAnimalListBinding
 import com.example.tierdex.model.AnimalViewModel
 
@@ -64,13 +62,10 @@ class AnimalListFragment : Fragment() {
                 return false
             }
         })
-
-
     }
 
     private fun onSearchAnimal() {
        val searchAnimal = binding.animalSearch.query.toString()
-       Log.d("eingabe Suchfeld", searchAnimal)
        viewModel.onSearch( searchAnimal )
     }
 }

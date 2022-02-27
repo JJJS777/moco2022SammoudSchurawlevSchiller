@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_animal_list" />
 
     <fragment
-        android:id="@+id/animalDetailFragment"
-        android:name="com.example.tierdex.fragments.AnimalDetailFragment"
-        android:label="AnimalDetailFragment"
-         tools:layout="@layout/fragment_animal_detail" />
-
-    <fragment
         android:id="@+id/addDiscoveryFragment"
         android:name="com.example.tierdex.fragments.AddDiscoveryFragment"
         android:label="Add new Discovery"

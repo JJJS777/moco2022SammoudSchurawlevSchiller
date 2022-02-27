@@ -1,4 +1,4 @@
-package com.example.tierdex.data.entities
+package com.example.tierdex.roomDB.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

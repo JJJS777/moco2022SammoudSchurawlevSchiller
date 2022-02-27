@@ -38,6 +38,7 @@ interface AnimalApiService {
 
 /**
  * A public Api object that exposes the lazy-initialized Retrofit service
+ * declare singleton objects
  */
 object AnimalApi {
     val retrofitService: AnimalApiService by lazy { retrofit.create(AnimalApiService::class.java) }

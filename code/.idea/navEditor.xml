@@ -24,6 +24,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_addDiscoveryFragment_to_homeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -46,8 +51,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="345" />
-                            <option name="y" value="1" />
+                            <option name="x" value="268" />
+                            <option name="y" value="17" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -90,7 +95,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_galleryImageView_to_photo_view_pager">
+                            <entry key="action_galleryImageView_to_addDiscoveryFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -105,8 +110,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-540" />
-                            <option name="y" value="33" />
+                            <option name="x" value="-483" />
+                            <option name="y" value="3" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -120,6 +125,20 @@
                             <option name="x" value="76" />
                             <option name="y" value="515" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_photo_view_pager_to_addDiscoveryFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_photo_view_pager_to_cameraLayout">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

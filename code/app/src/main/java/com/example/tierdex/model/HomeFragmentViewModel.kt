@@ -1,13 +1,10 @@
 package com.example.tierdex.model
 
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.*
 import com.example.tierdex.AddDiscoveryViewModel
-import com.example.tierdex.AddDiscoveryViewModelFactory
-import com.example.tierdex.TierDexApplication
-import com.example.tierdex.data.dao.DiscoveredDao
-import com.example.tierdex.data.entities.Coordinates
-import com.example.tierdex.data.entities.Discovered
+import com.example.tierdex.roomDB.dao.DiscoveredDao
+import com.example.tierdex.roomDB.entities.Coordinates
+import com.example.tierdex.roomDB.entities.Discovered
 import kotlinx.coroutines.launch
 
 class HomeFragmentViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) {

@@ -1,11 +1,11 @@
-package com.example.tierdex.data
+package com.example.tierdex.roomDB
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.tierdex.data.dao.DiscoveredDao
-import com.example.tierdex.data.entities.Discovered
+import com.example.tierdex.roomDB.dao.DiscoveredDao
+import com.example.tierdex.roomDB.entities.Discovered
 
 @Database(entities = [Discovered::class], version = 6, exportSchema = false )
 abstract class TierDexRoomDB: RoomDatabase() {

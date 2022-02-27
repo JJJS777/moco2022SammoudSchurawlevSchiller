@@ -11,6 +11,8 @@ data class ResSearchResults(
     val results: List<AnimalData>
 )
 
+
+//Data Attribute von Tieren
 data class AnimalData(
     val id: String,
     // used to map img_src from the JSON to imgSrcUrl in our class

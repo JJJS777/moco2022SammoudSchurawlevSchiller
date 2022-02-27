@@ -1,7 +1,7 @@
-package com.example.tierdex.data.dao
+package com.example.tierdex.roomDB.dao
 
 import androidx.room.*
-import com.example.tierdex.data.entities.Discovered
+import com.example.tierdex.roomDB.entities.Discovered
 import kotlinx.coroutines.flow.Flow
 
 @Dao
