@@ -29,8 +29,7 @@ class AnimalViewModel : ViewModel() {
         onSearch( "shark" )
     }
 
-    fun onSearch( animalQueryPara: String ) {
-        AnimalApi.retrofitService
+    fun onSearch( animalQueryPara: String ) { AnimalApi.retrofitService
             .getData(animalQueryPara, "imageAvailable:true")
             .enqueue(object : Callback<ApiResponse?> {
             override fun onResponse(call: Call<ApiResponse?>, response: Response<ApiResponse?>) {

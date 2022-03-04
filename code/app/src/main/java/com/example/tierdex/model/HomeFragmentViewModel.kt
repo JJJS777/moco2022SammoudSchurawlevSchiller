@@ -42,7 +42,6 @@ class HomeFragmentViewModel(private val discoveredDao: DiscoveredDao): ViewModel
             city = city,
             postcode = postcode,
             userID = "1",
-            imageUrl = "empty"
         )
     }
 

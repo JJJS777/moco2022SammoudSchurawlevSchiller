@@ -211,7 +211,7 @@ class AddDiscoveryFragment : Fragment() {
         binding.saveAction.setOnClickListener {
 
             if (binding.textInputAnimalName.text.toString() == ""
-                || binding.textCity.text.toString() == ""
+                || binding.textCountry.text.toString() == ""
                 || binding.textCity.text.toString() == ""
             ) {
                 Toast.makeText(

@@ -34,25 +34,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="animalDetailFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="346" />
-                            <option name="y" value="313" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="animalListFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="268" />
-                            <option name="y" value="17" />
+                            <option name="x" value="86" />
+                            <option name="y" value="14" />
                           </Point>
                         </option>
                       </LayoutPositions>

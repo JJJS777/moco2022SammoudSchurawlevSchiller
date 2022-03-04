@@ -6,11 +6,7 @@ import com.example.tierdex.roomDB.entities.Coordinates
 import com.example.tierdex.roomDB.entities.Discovered
 import kotlinx.coroutines.launch
 
-class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) { //hier ggf. mit AndroidViewModel arbeiten
-
-
-    //ToDo wofür nutzen?
-    val allDiscoveries: LiveData<List<Discovered>> = discoveredDao.getDiscoveries().asLiveData()
+class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel( ) {
 
     fun addNewDiscovery( discoName: String,
                          description: String,
@@ -49,7 +45,6 @@ class AddDiscoveryViewModel(private val discoveredDao: DiscoveredDao): ViewModel
             city = city,
             postcode = postcode,
             userID = "1",
-            imageUrl = "empty"
         )
     }
 
